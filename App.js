@@ -47,7 +47,7 @@ const HomeTab = TabNavigator({
         MainCreate:{
              screen:MainCreate,
             navigationOptions:({navigation}) => ({
-                headerTitle:'新建',
+                title:'新建',
                 tabBarLabel:'create',
                 tabBarIcon:({focused,tintColor}) => (
                     <TabBarItem
@@ -63,7 +63,7 @@ const HomeTab = TabNavigator({
     MainMsg:{
         screen:MainMsg,
         navigationOptions:({navigation}) => ({
-            headerTitle:'消息',
+            title:'消息',
             tabBarLabel:'msg',
             tabBarIcon:({focused,tintColor}) => (
                 <TabBarItem
@@ -78,7 +78,7 @@ const HomeTab = TabNavigator({
     MainMine:{
         screen:MainMine,
         navigationOptions:({navigation}) => ({
-            headerTitle:'我的',
+            title:'我的',
             tabBarLabel:'mine',
             tabBarIcon:({focused,tintColor}) => (
                 <TabBarItem
@@ -106,7 +106,7 @@ const HomeTab = TabNavigator({
         },
         //选项卡样式
         tabStyle:{
-            bottom:-6,
+            bottom:-6,//默认没有垂直居中，所以暂时先这么写，找到更好的办法的时候再做替换
             height:55,
         },
         //去掉安卓点击之后的小黄线
@@ -123,7 +123,7 @@ const AllNavigator = StackNavigator({
     TextPage: {
         screen: TextPage,
         navigationOptions:{
-            headerTitle:'Text'
+            headerTitle:'Text',
         }
     },
     SecondPage:{ screen:SecondPage},
