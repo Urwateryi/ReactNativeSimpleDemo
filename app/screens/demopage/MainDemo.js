@@ -13,7 +13,7 @@ import {
 var strList=[
     {
         key:'Text',
-        content:'TextPage'
+        content:'TextDemo'
     },
     {
         key:'Image',
@@ -28,7 +28,47 @@ var strList=[
         content:'FourPage'
     },
     {
+        key:'View',
+        content:'FourPage'
+    },
+    {
         key:'ScrollView',
+        content:'FivePage'
+    },
+    {
+        key:'WebView',
+        content:'FivePage'
+    },
+    {
+        key:'Storage',
+        content:'FivePage'
+    },
+    {
+        key:'Picker',
+        content:'FivePage'
+    },
+    {
+        key:'Refresh',
+        content:'FivePage'
+    },
+    {
+        key:'CheckBox',
+        content:'FivePage'
+    },
+    {
+        key:'Toast',
+        content:'FivePage'
+    },
+    {
+        key:'Video',
+        content:'FivePage'
+    },
+    {
+        key:'Media',
+        content:'FivePage'
+    },
+    {
+        key:'Swiper',
         content:'FivePage'
     },
     {
@@ -58,10 +98,6 @@ var strList=[
     {
         key:'聚合页面',
         content:'此页面主要测试聚合页面'
-    },
-    {
-        key:'页面刷新',
-        content:'此页面主要测试页面刷新'
     },
     {
         key:'与Android交互',

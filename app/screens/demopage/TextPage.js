@@ -24,11 +24,6 @@ export default class HelloWorldApp extends Component {
             </View>
         );
     }
-    //
-    // _goToNext(){
-    //     const {navigate} = this.props.navigation;
-    //     navigate('SecondPage');
-    // }
 }
 
 //ES6的写法

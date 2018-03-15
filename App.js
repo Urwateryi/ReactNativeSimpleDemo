@@ -11,10 +11,14 @@ import MainCreate from './app/screens/createpage/MainCreate'
 import MainFound from './app/screens/foundpage/MainFound'
 import MainMsg from './app/screens/msgpage/MainMsg'
 import MainMine from './app/screens/minepage/MainMine'
+
+import TextDemo from './app/screens/demopage/widgets/TextDemo'
+
 import React from "react";
 
 import {Images} from "./app/resources";
 import TabBarItem from './app/components/TabBarItem';
+import {Platform} from "react-native";
 
 //构造方法为TabNavigator(RouteConfigs, TabNavigatorConfig)
 const HomeTab = TabNavigator(
@@ -113,7 +117,7 @@ const HomeTab = TabNavigator(
             },
             //选项卡样式
             tabStyle: {
-                bottom: -6,//默认没有垂直居中，所以暂时先这么写，找到更好的办法的时候再做替换
+                bottom:Platform.OS=="ios"? 0: -6,//默认没有垂直居中，所以暂时先这么写，找到更好的办法的时候再做替换
                 height: 60,
             },
             //去掉安卓点击之后的小黄线
@@ -142,6 +146,7 @@ const AllNavigator = StackNavigator(
         ThirdPage: {screen: ThirdPage},
         FourPage: {screen: FourPage},
         FivePage: {screen: FivePage},
+        TextDemo:{screen:TextDemo}
     },
 //还可以有参数StackNavigatorConfig，这个参数主要是配置整个路由的，包括跳转动画，跳转方式等。
     {
