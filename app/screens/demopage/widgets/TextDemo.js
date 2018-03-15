@@ -53,6 +53,26 @@ export default class TextDemo extends Component {
         headerStyle: {backgroundColor: '#fff', height: Platform.OS == "ios" ? 64 : 48},
     });
 
+    componentDidMount() {
+
+    }
+
+    componentDidUpdate() {
+
+    }
+
+    componentWillMount() {
+
+    }
+
+    componentWillReceiveProps() {
+
+    }
+
+    componentWillUnmount() {
+
+    }
+
     _onPress(toast){
         alert("TAG onPress"+toast)
     }
