@@ -102,20 +102,20 @@ const styles = StyleSheet.create({
     titleBase: {
         textAlign: 'center',
         textDecorationLine: 'underline line-through',
-        textDecorationStyle: 'dashed',
+        textDecorationStyle: 'dashed',//ios有效果，android没效果
         letterSpacing: 4,
-        textDecorationColor: 'yellow',
+        textDecorationColor: 'yellow',//iOS 有效果，android里无效，颜色跟字体颜色一样
         textAlignVertical: 'center',
         color: 'red',
         fontSize: 28,
-        fontFamily: 'Colin',
+        fontFamily: Platform.OS == "ios" ? null : 'Colin',
         writingDirection: 'rtl',
         marginBottom:10,
     },
     title: {
         color: 'green',
         fontWeight: '900',
-        fontStyle: 'italic'
+        fontStyle: 'italic'//斜体在ios上，只对英文有效，中文无效，android上中英文都有效
     },
     subTitle: {
         color: 'blue',
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
         color:'black'
     },
     testWordGap:{
-        letterSpacing:50,//为什么没有作用呢
+        letterSpacing:50,//为什么没有作用呢，ios上有作用，android上无作用
         color:'red'
     }
 });
