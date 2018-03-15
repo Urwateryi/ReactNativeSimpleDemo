@@ -17,7 +17,11 @@ var strList=[
     },
     {
         key:'Image',
-        content:'SecondPage'
+        content:'ImageDemo'
+    },
+    {
+        key:'ImageBackground ',
+        content:'FivePage'
     },
     {
         key:'Input',

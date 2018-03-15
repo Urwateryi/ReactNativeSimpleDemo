@@ -1,6 +1,7 @@
 /**
  * Description:测试Text控件
  *
+ * 涉及知识点：各种属性设置
  * Author: zoe
  * Time: 2018/3/15 0015
  * E-mail: 807861340@qq.com
@@ -52,26 +53,6 @@ export default class TextDemo extends Component {
         headerTitle: "TextDemo",
         headerStyle: {backgroundColor: '#fff', height: Platform.OS == "ios" ? 64 : 48},
     });
-
-    componentDidMount() {
-
-    }
-
-    componentDidUpdate() {
-
-    }
-
-    componentWillMount() {
-
-    }
-
-    componentWillReceiveProps() {
-
-    }
-
-    componentWillUnmount() {
-
-    }
 
     _onPress(toast){
         alert("TAG onPress"+toast)
@@ -142,7 +123,7 @@ const styles = StyleSheet.create({
     testLines:{
         marginBottom:10,
         color:'orange'
-        // numberOfLines:2//为何写在这里是无效的呢，需要些在style外面呢
+        // numberOfLines:2//为何写在这里是无效的呢，需要些在style外面呢，有些属性不能写在style里是为啥
     },
     testLineHeight:{
         lineHeight:30,

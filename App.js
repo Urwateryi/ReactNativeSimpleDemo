@@ -13,6 +13,7 @@ import MainMsg from './app/screens/msgpage/MainMsg'
 import MainMine from './app/screens/minepage/MainMine'
 
 import TextDemo from './app/screens/demopage/widgets/TextDemo'
+import ImageDemo from './app/screens/demopage/widgets/ImageDemo'
 
 import React from "react";
 
@@ -146,7 +147,8 @@ const AllNavigator = StackNavigator(
         ThirdPage: {screen: ThirdPage},
         FourPage: {screen: FourPage},
         FivePage: {screen: FivePage},
-        TextDemo:{screen:TextDemo}
+        TextDemo:{screen:TextDemo},
+        ImageDemo:{screen:ImageDemo}
     },
 //还可以有参数StackNavigatorConfig，这个参数主要是配置整个路由的，包括跳转动画，跳转方式等。
     {
