@@ -39,5 +39,9 @@ export default {
         ic_11:require('./imgs/ic_11.png'),
         ic_12:require('./imgs/ic_12.png'),
         ic_tag:require('./imgs/ic_tag.png'),
+    },
+
+    other_test:{
+        bg_beauty:require('./imgs/bg.jpg')
     }
 }

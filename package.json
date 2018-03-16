@@ -8,10 +8,12 @@
   },
   "dependencies": {
     "native-base": "^2.3.10",
-    "react": "^16.3.0-alpha.1",
+    "react": "^16.3.0-alpha.2",
     "react-native": "0.54.0",
+    "react-native-camera": "^1.0.2",
+    "react-native-image-picker": "^0.26.7",
     "react-native-vector-icons": "^4.5.0",
-    "react-navigation": "^1.5.0"
+    "react-navigation": "^1.5.7"
   },
   "devDependencies": {
     "babel-jest": "22.4.1",
