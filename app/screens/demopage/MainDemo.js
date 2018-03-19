@@ -9,6 +9,8 @@ import {
     View,
     Text
 } from 'react-native';
+import ImageBackGroundDemo from "./widgets/ImageBackGroundDemo";
+import InputDemo from "./widgets/InputDemo";
 
 var strList=[
     {
@@ -25,67 +27,63 @@ var strList=[
     },
     {
         key:'ImageBackground ',
-        content:'FivePage'
+        content:'ImageBackGroundDemo'
     },
     {
         key:'Input',
-        content:'ThirdPage'
+        content:'InputDemo'
     },
     {
         key:'Button',
-        content:'FourPage'
-    },
-    {
-        key:'View',
-        content:'FourPage'
+        content:'ButtonDemo'
     },
     {
         key:'ScrollView',
-        content:'FivePage'
+        content:'ScrollViewDemo'
     },
     {
         key:'WebView',
-        content:'FivePage'
+        content:'WebViewDemo'
     },
     {
         key:'Storage',
-        content:'FivePage'
+        content:'StorageDemo'
     },
     {
         key:'Picker',
-        content:'FivePage'
+        content:'PickerDemo'
     },
     {
         key:'Refresh',
-        content:'FivePage'
+        content:'RefreshDemo'
     },
     {
         key:'CheckBox',
-        content:'FivePage'
+        content:'CheckBoxDemo'
     },
     {
         key:'Toast',
-        content:'FivePage'
+        content:'ToastDemo'
     },
     {
         key:'Video',
-        content:'FivePage'
+        content:'VideoDemo'
     },
     {
         key:'Media',
-        content:'FivePage'
+        content:'MediaDemo'
     },
     {
         key:'Swiper',
-        content:'FivePage'
+        content:'SwiperDemo'
     },
     {
         key:'长列表FlatList',
-        content:'此页面主要测试FlatList控件'
+        content:'FlatListDemo'
     },
     {
         key:'分组列表SectionList',
-        content:'此页面主要测试SectionList控件'
+        content:'SectionListDemo'
     },
     {
         key:'图文列表',
@@ -93,15 +91,15 @@ var strList=[
     },
     {
         key:'网络请求',
-        content:'此页面主要测试网络请求'
+        content:'NetDemo'
     },
     {
         key:'动画',
-        content:'此页面主要测试动画'
+        content:'AnimationDemo'
     },
     {
         key:'自定义控件',
-        content:'此页面主要测试自定义控件'
+        content:'CustomCompontDemo'
     },
     {
         key:'聚合页面',
@@ -117,7 +115,7 @@ var strList=[
     },
     {
         key:'打包',
-        content:'此页面主要测试打包'
+        content:'PickUpDemo'
     },
 ];
 

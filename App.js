@@ -1,4 +1,9 @@
 import {StackNavigator, TabNavigator} from 'react-navigation';
+import React from "react";
+
+import {Images} from "./app/resources";
+import TabBarItem from './app/components/TabBarItem';
+import {Platform} from "react-native";
 
 import TextPage from './app/screens/demopage/TextPage'
 import SecondPage from './app/screens/demopage/SecondPage'
@@ -14,13 +19,11 @@ import MainMine from './app/screens/minepage/MainMine'
 
 import TextDemo from './app/screens/demopage/widgets/TextDemo'
 import ImageDemo from './app/screens/demopage/widgets/ImageDemo'
-
-import React from "react";
-
-import {Images} from "./app/resources";
-import TabBarItem from './app/components/TabBarItem';
-import {Platform} from "react-native";
 import CameraDemo from "./app/screens/demopage/widgets/CameraDemo";
+import ImageBackGroundDemo from "./app/screens/demopage/widgets/ImageBackGroundDemo";
+import InputDemo from "./app/screens/demopage/widgets/InputDemo";
+import ButtonDemo from "./app/screens/demopage/widgets/ButtonDemo";
+import ScrollViewDemo from "./app/screens/demopage/widgets/ScrollViewDemo";
 
 //构造方法为TabNavigator(RouteConfigs, TabNavigatorConfig)
 const HomeTab = TabNavigator(
@@ -150,7 +153,11 @@ const AllNavigator = StackNavigator(
         FivePage: {screen: FivePage},
         TextDemo:{screen:TextDemo},
         ImageDemo:{screen:ImageDemo},
-        CameraDemo:{screen:CameraDemo}
+        CameraDemo:{screen:CameraDemo},
+        ImageBackGroundDemo:{screen:ImageBackGroundDemo},
+        InputDemo:{screen:InputDemo},
+        ButtonDemo:{screen:ButtonDemo},
+        ScrollViewDemo:{screen:ScrollViewDemo}
     },
 //还可以有参数StackNavigatorConfig，这个参数主要是配置整个路由的，包括跳转动画，跳转方式等。
     {

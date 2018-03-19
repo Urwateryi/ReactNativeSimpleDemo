@@ -211,8 +211,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-end',
         alignItems: 'center'
-    },
-    capture: {
+    },capture: {
         flex: 0,
         backgroundColor: '#fff',
         borderRadius: 5,
