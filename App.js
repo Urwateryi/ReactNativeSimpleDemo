@@ -20,6 +20,7 @@ import React from "react";
 import {Images} from "./app/resources";
 import TabBarItem from './app/components/TabBarItem';
 import {Platform} from "react-native";
+import CameraDemo from "./app/screens/demopage/widgets/CameraDemo";
 
 //构造方法为TabNavigator(RouteConfigs, TabNavigatorConfig)
 const HomeTab = TabNavigator(
@@ -148,7 +149,8 @@ const AllNavigator = StackNavigator(
         FourPage: {screen: FourPage},
         FivePage: {screen: FivePage},
         TextDemo:{screen:TextDemo},
-        ImageDemo:{screen:ImageDemo}
+        ImageDemo:{screen:ImageDemo},
+        CameraDemo:{screen:CameraDemo}
     },
 //还可以有参数StackNavigatorConfig，这个参数主要是配置整个路由的，包括跳转动画，跳转方式等。
     {

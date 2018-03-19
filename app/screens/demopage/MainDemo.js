@@ -20,6 +20,10 @@ var strList=[
         content:'ImageDemo'
     },
     {
+        key:'Camera',
+        content:'CameraDemo'
+    },
+    {
         key:'ImageBackground ',
         content:'FivePage'
     },
