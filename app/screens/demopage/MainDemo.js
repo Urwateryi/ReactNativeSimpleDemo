@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import ImageBackGroundDemo from "./widgets/ImageBackGroundDemo";
 import InputDemo from "./widgets/InputDemo";
+import RefDemo from "./widgets/RefDemo";
 
 var strList=[
     {
@@ -40,6 +41,10 @@ var strList=[
     {
         key:'ScrollView',
         content:'ScrollViewDemo'
+    },
+    {
+        key:'Ref',
+        content:'RefDemo'
     },
     {
         key:'WebView',

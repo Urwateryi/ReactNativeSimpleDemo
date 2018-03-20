@@ -24,6 +24,7 @@ import ImageBackGroundDemo from "./app/screens/demopage/widgets/ImageBackGroundD
 import InputDemo from "./app/screens/demopage/widgets/InputDemo";
 import ButtonDemo from "./app/screens/demopage/widgets/ButtonDemo";
 import ScrollViewDemo from "./app/screens/demopage/widgets/ScrollViewDemo";
+import RefDemo from "./app/screens/demopage/widgets/RefDemo";
 
 //构造方法为TabNavigator(RouteConfigs, TabNavigatorConfig)
 const HomeTab = TabNavigator(
@@ -157,7 +158,8 @@ const AllNavigator = StackNavigator(
         ImageBackGroundDemo:{screen:ImageBackGroundDemo},
         InputDemo:{screen:InputDemo},
         ButtonDemo:{screen:ButtonDemo},
-        ScrollViewDemo:{screen:ScrollViewDemo}
+        ScrollViewDemo:{screen:ScrollViewDemo},
+        RefDemo:{screen:RefDemo}
     },
 //还可以有参数StackNavigatorConfig，这个参数主要是配置整个路由的，包括跳转动画，跳转方式等。
     {

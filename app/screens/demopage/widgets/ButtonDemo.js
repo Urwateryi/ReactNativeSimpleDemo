@@ -32,19 +32,25 @@ export default class ButtonDemo extends Component {
     }
     //点击事件函数
     onButtonPress ()  {
-        alert(this.state.input);
+        this.setState({input:'按啥啊按啥啊'});
+        //修改文本输入框的属性值
+        this.refs.textInputRefer.setNativeProps({
+            editable:false
+        });
     };
 
     render() {
         return (
             <View style={styles.container}>
                 <TextInput
-                           placeholder='zoey'
+                            ref="textInputRefer"
+                            value={this.state.input}
+                            placeholder='zoey'
                            placeholderTextColor='red'
                            underlineColorAndroid='transparent' //设置下划线背景色透明 达到去掉下划线的效果
                            editable={true}
                            maxLength={20}
-                           secureTextEntry={true}
+                           // secureTextEntry={true} //设置是否显示为密码
 
                            autoCapitalize='characters'//为啥没作用
 
