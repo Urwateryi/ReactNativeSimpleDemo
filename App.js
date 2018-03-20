@@ -5,12 +5,6 @@ import {Images} from "./app/resources";
 import TabBarItem from './app/components/TabBarItem';
 import {Platform} from "react-native";
 
-import TextPage from './app/screens/demopage/TextPage'
-import SecondPage from './app/screens/demopage/SecondPage'
-import ThirdPage from './app/screens/demopage/ThirdPage'
-import FourPage from './app/screens/demopage/FourPage'
-import FivePage from "./app/screens/demopage/FivePage";
-
 import MainDemo from "./app/screens/demopage/MainDemo";
 import MainCreate from './app/screens/createpage/MainCreate'
 import MainFound from './app/screens/foundpage/MainFound'
@@ -142,18 +136,12 @@ const AllNavigator = StackNavigator(
     {
         // 所有页面，第一个优先显示
         HomePage: {screen: HomeTab},
-        TextPage: {
-            screen: TextPage,
+
+        TextDemo:{
+            screen:TextDemo,
             navigationOptions: {
                 title: 'Text',//这里我们配置了首页和第二个页面，并且配置了标题参数。当然，如果你不想在路由里面配置页面的参数，你也可以在页面中配置，需要在页面中定义一个静态常量navigationOptions
-
-            }
-        },
-        SecondPage: {screen: SecondPage},
-        ThirdPage: {screen: ThirdPage},
-        FourPage: {screen: FourPage},
-        FivePage: {screen: FivePage},
-        TextDemo:{screen:TextDemo},
+            }},
         ImageDemo:{screen:ImageDemo},
         CameraDemo:{screen:CameraDemo},
         ImageBackGroundDemo:{screen:ImageBackGroundDemo},
@@ -165,7 +153,7 @@ const AllNavigator = StackNavigator(
     },
 //还可以有参数StackNavigatorConfig，这个参数主要是配置整个路由的，包括跳转动画，跳转方式等。
     {
-        // initialRouteName: 'TextPage',//初始化哪个界面为根界面，如果不配置，默认使用RouteConfigs中的第一个页面当做根界面
+        // initialRouteName: 'TextDemo',//初始化哪个界面为根界面，如果不配置，默认使用RouteConfigs中的第一个页面当做根界面
         // cardStyle:({backgroundColor:'red'}),//不是说说背景色吗，为啥是跳转的渐变色？
 
 
