@@ -1,10 +1,11 @@
 /**
  * Description:测试Image控件
  *
- * 涉及知识点：加载网络，本地，静态资源图片，拍照显示，模糊，裁剪，加载GIF，一些图片库
+ * 涉及知识点：
+ * 通过react-native-camera第三方库进行拍照并显示
+ *
  * Author: zoe
  * Time: 2018/3/15 0015
- * E-mail: 807861340@qq.com
  */
 import {
     StyleSheet,

@@ -1,10 +1,13 @@
 /**
  * Description:测试ScrollView控件
  *
- * 涉及知识点：各种属性设置
+ * 涉及知识点：
+ *
+ * 各种属性设置
+ * 关键方法测试
+ *
  * Author: zoe
  * Time: 2018/3/15 0015
- * E-mail: 807861340@qq.com
  */
 import React, {Component} from 'react';
 import {
@@ -13,7 +16,7 @@ import {
     TouchableOpacity,
     View,
     ScrollView,
-    Text, Dimensions
+    Text
 } from 'react-native'
 
 export default class ScrollViewDemo extends Component {

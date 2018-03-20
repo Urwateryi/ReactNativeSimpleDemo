@@ -1,10 +1,12 @@
 /**
  * Description:测试ImageBackGround控件
  *
- * 涉及知识点：各种属性设置
+ * 涉及知识点：
+ *
+ * 各种属性设置
+ *
  * Author: zoe
  * Time: 2018/3/15 0015
- * E-mail: 807861340@qq.com
  */
 
 import React, {Component} from 'react';

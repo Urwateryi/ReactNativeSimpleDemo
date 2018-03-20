@@ -4,7 +4,6 @@
  *
  * Author: zoe
  * Time: 2018/3/15 0015
- * E-mail: 807861340@qq.com
  */
 import React, {Component} from 'react';
 import {
