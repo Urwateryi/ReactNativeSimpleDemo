@@ -4,9 +4,10 @@
  * 涉及知识点：
  *
  * 显示网页
- * 事件监听
- * 显示加载进度条
- * 显示视频
+ // * 事件监听
+ // * 显示加载进度条
+ // * 显示视频
+ // * web页面与原生页面的交互
  *
  * Author: zoe
  * Time: 2018/3/15 0015
@@ -28,14 +29,6 @@ export default class WebViewDemo extends Component {
         headerTitle: "WebViewDemo",
         headerStyle: {backgroundColor: '#fff', height: Platform.OS == "ios" ? 64 : 48},
     });
-
-    //构造函数
-    constructor(props) {
-        super(props);
-        this.state = {
-            input:'zoey',//初始值
-        };
-    }
 
     render() {
         return (

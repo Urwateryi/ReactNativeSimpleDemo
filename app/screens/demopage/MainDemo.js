@@ -12,6 +12,7 @@ import {
 import ImageBackGroundDemo from "./widgets/ImageBackGroundDemo";
 import InputDemo from "./widgets/InputDemo";
 import RefDemo from "./widgets/RefDemo";
+import StorageDemo from "./widgets/StorageDemo";
 
 var strList=[
     {
