@@ -20,7 +20,7 @@ import {
     Text, Dimensions,
 } from 'react-native'
 
-import {Images} from "../../../resources";
+import Images from "../../../resources/Images";
 
 export default class ImageBackGroundDemo extends Component {
 

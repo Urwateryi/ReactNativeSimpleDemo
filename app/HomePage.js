@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Image,View} from 'react-native';
 
-import {Images} from "./resources";
+import Images from "./resources/Images";
 import {TabNavigator} from 'react-navigation';
 
 import MainDemo from './screens/demopage/MainDemo'

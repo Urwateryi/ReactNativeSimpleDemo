@@ -50,6 +50,8 @@ import {
     Text,
 } from 'react-native'
 
+import Strings from "../../../resources/Strings";
+
 export default class TextDemo extends Component {
 
     static navigationOptions = ({navigation}) => ({
@@ -89,7 +91,7 @@ export default class TextDemo extends Component {
                 </Text>
 
                 <Text style={styles.testWordGap}>
-                    测试字距测试字距测试字距
+                    测试字距测试字距测试字距 {Strings.MY_NAME}
                 </Text>
             </View>
         );

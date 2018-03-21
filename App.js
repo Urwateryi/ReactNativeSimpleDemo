@@ -1,7 +1,7 @@
 import {StackNavigator, TabNavigator} from 'react-navigation';
 import React from "react";
 
-import {Images} from "./app/resources";
+import Images from "./app/resources/Images";
 import TabBarItem from './app/components/TabBarItem';
 import {Platform} from "react-native";
 

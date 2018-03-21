@@ -18,7 +18,7 @@ import {
 } from 'react-native'
 
 import React, {Component} from 'react'
-import {Images} from "../../../resources";
+import Images from "../../../resources/Images";
 
 // import { RNCamera} from 'react-native-camera';
 
