@@ -52,6 +52,8 @@ import {
 
 import Strings from "../../../resources/Strings";
 
+import "../../../resources/Constants";
+
 export default class TextDemo extends Component {
 
     static navigationOptions = ({navigation}) => ({
@@ -91,7 +93,7 @@ export default class TextDemo extends Component {
                 </Text>
 
                 <Text style={styles.testWordGap}>
-                    测试字距测试字距测试字距 {Strings.MY_NAME}
+                    测试字距测试字距测试字距 {Strings.MY_NAME='what did u say'} {global.constants.website}
                 </Text>
             </View>
         );
