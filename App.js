@@ -21,6 +21,7 @@ import ScrollViewDemo from "./app/screens/demopage/widgets/ScrollViewDemo";
 import RefDemo from "./app/screens/demopage/widgets/RefDemo";
 import WebViewDemo from "./app/screens/demopage/widgets/WebViewDemo";
 import StorageDemo from "./app/screens/demopage/widgets/StorageDemo";
+import RefreshDemo from "./app/screens/demopage/widgets/RefreshDemo";
 
 //构造方法为TabNavigator(RouteConfigs, TabNavigatorConfig)
 const HomeTab = TabNavigator(
@@ -151,7 +152,8 @@ const AllNavigator = StackNavigator(
         ScrollViewDemo:{screen:ScrollViewDemo},
         RefDemo:{screen:RefDemo},
         WebViewDemo:{screen:WebViewDemo},
-        StorageDemo:{screen:StorageDemo}
+        StorageDemo:{screen:StorageDemo},
+        RefreshDemo:{screen:RefreshDemo}
     },
 //还可以有参数StackNavigatorConfig，这个参数主要是配置整个路由的，包括跳转动画，跳转方式等。
     {
