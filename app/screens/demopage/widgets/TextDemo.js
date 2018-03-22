@@ -50,9 +50,11 @@ import {
     Text,
 } from 'react-native'
 
-import Strings from "../../../resources/Strings";
-
-import "../../../resources/Constants";
+import "../../../config/Constants";
+import Constants from "../../../config/Constants";
+import {
+    LOGIN_NAME
+} from "../../../config/Constants";
 
 export default class TextDemo extends Component {
 
@@ -93,7 +95,7 @@ export default class TextDemo extends Component {
                 </Text>
 
                 <Text style={styles.testWordGap}>
-                    测试字距测试字距测试字距 {Strings.MY_NAME='what did u say'} {global.constants.website}
+                    测试字距测试字距测试字距 {Constants.my_name='what did u say'} {global.variate.website} {LOGIN_NAME}
                 </Text>
             </View>
         );
