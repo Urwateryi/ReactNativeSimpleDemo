@@ -20,6 +20,7 @@ import {
 
 import HeaderComponent from '../../../components/HeaderComponent'
 import FooterComponent from '../../../components/FooterComponent'
+import Colors from "../../../resources/Colors";
 
 export default class SectionListDemo extends Component {
 
@@ -88,16 +89,16 @@ const styles = StyleSheet.create({
         flex : 1,
         backgroundColor : 'white'
     }, item : {
-        backgroundColor : '#ffffff',
-        color : '#000002',
+        backgroundColor : 'white',
+        color : 'black',
         height : 50,
         padding : 10,
-        borderBottomColor : '#eeeeee',
+        borderBottomColor : Colors.border,
         borderBottomWidth : 1,
         fontSize : 20,
     }, sectionHeader : {
-        backgroundColor : '#f2f2f2',
-        color : '#000002',
+        backgroundColor :Colors.bg,
+        color : 'black',
         padding : 5,
         height : 30,
         fontSize : 15,

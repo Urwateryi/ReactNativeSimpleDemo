@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 10,
-        backgroundColor: '#fff'
+        backgroundColor: 'white'
     }, img: {
         width: Dimensions.get('window').width/2,
         height: Dimensions.get('window').width / 2,

@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     },
     capture: {
         flex: 0,
-        backgroundColor: '#fff',
+        backgroundColor: 'white',
         borderRadius: 5,
         padding: 15,
         paddingHorizontal: 20,

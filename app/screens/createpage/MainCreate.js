@@ -11,6 +11,8 @@ import {
     Text,
 } from 'react-native';
 
+import Colors from '../../resources/Colors'
+
 export default class MainCreate extends Component {
     //----------------------跳转，方法1：:-------------------------------------
     // render() {
@@ -83,10 +85,10 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',//定制主轴
         alignItems: 'stretch',//定制副轴
         alignContent: 'flex-start',
-        backgroundColor: '#f2f2f2',
+        backgroundColor: Colors.bg,
     }, text: {
         fontSize: 50,
         textAlign: 'center',
-        color: '#333333',
+        color: Colors.gray,
     }
 })

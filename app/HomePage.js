@@ -9,6 +9,7 @@ import MainCreate from './screens/createpage/MainCreate'
 import MainFound from './screens/foundpage/MainFound'
 import MainMsg from './screens/msgpage/MainMsg'
 import MainMine from './screens/minepage/MainMine'
+import Colors from "./resources/Colors";
 
 /**
  * Description:首页
@@ -62,15 +63,15 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',//定制主轴
         alignItems: 'stretch',//定制副轴
         alignContent: 'flex-start',
-        backgroundColor: '#f2f2f2',
+        backgroundColor:Colors.bg,
     }, selectedTabText:{
-        color:'#D81E06'
+        color:Colors.primary
     }, nani: {
         flexDirection: 'row',//当前容器使用什么布局
         justifyContent: 'space-around',//定制主轴
         alignItems: 'center',//定制副轴
         height: 80,
-        backgroundColor: '#ffffff'
+        backgroundColor: 'white'
     }, navigation: {
         width: 40,
         height: 40
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
         width:20,
         height:20
     },tabText:{
-        color:'#000000',
+        color:'black',
         fontSize:10
     }
 });

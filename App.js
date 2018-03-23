@@ -24,6 +24,8 @@ import StorageDemo from "./app/screens/demopage/widgets/StorageDemo";
 import RefreshDemo from "./app/screens/demopage/widgets/RefreshDemo";
 import SectionListDemo from "./app/screens/demopage/widgets/SectionListDemo";
 
+import Colors from './app/resources/Colors'
+
 //构造方法为TabNavigator(RouteConfigs, TabNavigatorConfig)
 const HomeTab = TabNavigator(
     //下面为参数RouteConfigs
@@ -111,11 +113,11 @@ const HomeTab = TabNavigator(
         animationEnabled: true,
         lazy: true,
         tabBarOptions: {
-            activeTintColor: '#d81e06',
-            inactiveTintColor: '#979797',
+            activeTintColor: Colors.primary,
+            inactiveTintColor: Colors.inactiveTint,
             showIcon: true,
             showLabel: true,
-            style: {backgroundColor: '#ffffff',},
+            style: {backgroundColor: 'white',},
             labelStyle: {
                 fontSize: 8, // 文字大小
             },

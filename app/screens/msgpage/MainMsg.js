@@ -7,6 +7,7 @@ import {
     View,
     Text,
 } from 'react-native';
+import Colors from "../../resources/Colors";
 export default class MainMsg extends Component {
     render() {
         return (
@@ -24,10 +25,10 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',//定制主轴
         alignItems: 'stretch',//定制副轴
         alignContent: 'flex-start',
-        backgroundColor: '#f2f2f2',
-    }, text: {
+        backgroundColor: Colors.bg,
+    },text:{
         fontSize: 50,
         textAlign: 'center',
-        color: '#333333',
+        color: Colors.gray,
     }
 })

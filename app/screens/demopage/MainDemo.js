@@ -14,6 +14,8 @@ import InputDemo from "./widgets/InputDemo";
 import RefDemo from "./widgets/RefDemo";
 import StorageDemo from "./widgets/StorageDemo";
 
+import Colors from '../../resources/Colors'
+
 var strList=[
     {
         key:'Text',
@@ -161,7 +163,7 @@ export default class MainDemo extends Component{
 const styles=StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor:'#f2f2f2',
+        backgroundColor:Colors.bg,
     },
     item:{
         alignItems:'center',
@@ -171,10 +173,10 @@ const styles=StyleSheet.create({
         backgroundColor:'white',
         height:55,
         borderBottomWidth: 1,
-        borderBottomColor: '#f2f2f2'
+        borderBottomColor:Colors.border
     }, one: {
         fontSize: 30,
         textAlign: 'center',
-        color: '#333333',
+        color: Colors.gray,
     }
 });
