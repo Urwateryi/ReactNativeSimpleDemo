@@ -15,6 +15,7 @@ import RefDemo from "./widgets/RefDemo";
 import StorageDemo from "./widgets/StorageDemo";
 
 import Colors from '../../resources/Colors'
+import TxtPicPageDemo from "./widgets/TxtPicPageDemo";
 
 var strList=[
     {
@@ -95,7 +96,7 @@ var strList=[
     },
     {
         key:'图文列表',
-        content:'此页面主要测试图文列表'
+        content:'TxtPicPageDemo'
     },
     {
         key:'网络请求',

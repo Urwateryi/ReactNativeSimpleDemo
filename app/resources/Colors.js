@@ -6,7 +6,7 @@
  */
 export default {
     primary: '#d81e06',
-    border: '#e0e0e0',
+    border: '#eeeeee',
     bg: '#f2f2f2',
     inactiveTint: '#979797',
     gray:'#333333',

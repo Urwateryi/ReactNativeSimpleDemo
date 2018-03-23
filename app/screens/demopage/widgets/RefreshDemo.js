@@ -40,17 +40,17 @@ export default class RefreshDemo extends PureComponent {
                 style={styles.container}
                 data={this.state.data}
                 //item显示的布局
-                renderItem={({item}) => this._createListItem(item)}
+                renderItem={({item}) => this.createListItem(item)}
                 // 空布局
-                ListEmptyComponent={this._createEmptyView}
+                ListEmptyComponent={this.createEmptyView}
                 //添加头尾布局
-                ListHeaderComponent={this._createListHeader}
-                ListFooterComponent={this._createListFooter}
+                ListHeaderComponent={this.createListHeader}
+                ListFooterComponent={this.createListFooter}
                 //下拉刷新相关
-                onRefresh={() => this._onRefresh()}
+                onRefresh={() => this.onRefresh()}
                 refreshing={this.state.isRefresh}
                 //加载更多
-                onEndReached={() => this._onLoadMore()}
+                onEndReached={() => this.onLoadMore()}
                 onEndReachedThreshold={0.1}
             />
         );
@@ -60,7 +60,7 @@ export default class RefreshDemo extends PureComponent {
     /**
      * 创建头部布局
      */
-    _createListHeader(){
+    createListHeader(){
         return (
             <View style={styles.headView}>
                 <Text style={{color:'white'}}>
@@ -73,7 +73,7 @@ export default class RefreshDemo extends PureComponent {
     /**
      * 创建头部布局
      */
-    _createListFooter(){
+    createListFooter(){
         return (
             <View style={styles.footerView}>
                 <Text style={{color:'white'}}>
@@ -87,9 +87,9 @@ export default class RefreshDemo extends PureComponent {
     /**
      * 创建布局
      */
-    _createListItem(item){
+    createListItem(item){
         return (
-            <TouchableOpacity activeOpacity={0.5} onPress={() => this._onItemClick(item)}>
+            <TouchableOpacity activeOpacity={0.5} onPress={() => this.onItemClick(item)}>
                 <Image source={{uri:item.logo_url}} style={styles.itemImages}/>
                 <Text>
                     {item.baike_name}
@@ -101,7 +101,7 @@ export default class RefreshDemo extends PureComponent {
     /**
      * 空布局
      */
-    _createEmptyView(){
+    createEmptyView(){
         return (
             <View style={{height:'100%', alignItems:'center', justifyContent:'center'}}>
                 <Text style={{fontSize:16}}>
@@ -117,7 +117,7 @@ export default class RefreshDemo extends PureComponent {
      * 获取360 下载列表
      * @private
      */
-    _getHotList() {
+    getHotList() {
         fetch("http://m.app.haosou.com/index/getData?type=1&page=" + this.page)
             .then((response) => response.json())
             .then((responseJson) => {
@@ -148,11 +148,11 @@ export default class RefreshDemo extends PureComponent {
      * 下啦刷新
      * @private
      */
-    _onRefresh=()=>{
+    onRefresh=()=>{
         // 不处于 下拉刷新
         if(!this.state.isRefresh){
             this.page = 1
-            this._getHotList()
+            this.getHotList()
         }
     };
 
@@ -160,18 +160,18 @@ export default class RefreshDemo extends PureComponent {
      * 加载更多
      * @private
      */
-    _onLoadMore(){
+    onLoadMore(){
         // 不处于正在加载更多 && 有下拉刷新过，因为没数据的时候 会触发加载
         if (!this.state.isLoadMore && this.state.data.length > 0){
             this.page = this.page + 1
-            this._getHotList()
+            this.getHotList()
         }
     }
 
     /**
      * item点击事件
      */
-    _onItemClick(item){
+    onItemClick(item){
         console.log("page" + this.state.page + " = "  + item.baike_name)
     }
 }

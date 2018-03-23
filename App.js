@@ -4,6 +4,7 @@ import React from "react";
 import Images from "./app/resources/Images";
 import TabBarItem from './app/components/TabBarItem';
 import {Platform} from "react-native";
+import Colors from './app/resources/Colors'
 
 import MainDemo from "./app/screens/demopage/MainDemo";
 import MainCreate from './app/screens/createpage/MainCreate'
@@ -23,8 +24,7 @@ import WebViewDemo from "./app/screens/demopage/widgets/WebViewDemo";
 import StorageDemo from "./app/screens/demopage/widgets/StorageDemo";
 import RefreshDemo from "./app/screens/demopage/widgets/RefreshDemo";
 import SectionListDemo from "./app/screens/demopage/widgets/SectionListDemo";
-
-import Colors from './app/resources/Colors'
+import TxtPicPageDemo from "./app/screens/demopage/widgets/TxtPicPageDemo";
 
 //构造方法为TabNavigator(RouteConfigs, TabNavigatorConfig)
 const HomeTab = TabNavigator(
@@ -157,7 +157,8 @@ const AllNavigator = StackNavigator(
         WebViewDemo:{screen:WebViewDemo},
         StorageDemo:{screen:StorageDemo},
         RefreshDemo:{screen:RefreshDemo},
-        SectionListDemo:{screen:SectionListDemo}
+        SectionListDemo:{screen:SectionListDemo},
+        TxtPicPageDemo:{screen:TxtPicPageDemo}
     },
 //还可以有参数StackNavigatorConfig，这个参数主要是配置整个路由的，包括跳转动画，跳转方式等。
     {
