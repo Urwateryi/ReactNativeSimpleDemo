@@ -9,5 +9,8 @@ export default {
     border: '#e0e0e0',
     bg: '#f2f2f2',
     inactiveTint: '#979797',
-    gray:'#333333'
+    gray:'#333333',
+    light_gray:'#777777',
+    bright_gray:'#999999',
+    dark_gray:'#222222'
 }

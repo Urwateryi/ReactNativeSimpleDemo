@@ -1,14 +1,14 @@
 /**
  * Description:
  */
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {
     StyleSheet,
     View,
     Text,
 } from 'react-native';
 import Colors from "../../resources/Colors";
-export default class MainMsg extends Component {
+export default class MainMsg extends PureComponent {
     render() {
         return (
             <View style={styles.container}>

@@ -16,7 +16,7 @@ import {
     Platform
 } from 'react-native'
 import {RNCamera} from 'react-native-camera';
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 
 //底部弹出框选项
 var photoOptions = {
@@ -33,7 +33,7 @@ var photoOptions = {
     }
 }
 
-class BadInstagramCloneApp extends Component {
+class BadInstagramCloneApp extends PureComponent {
     render() {
         return (
             <View style={styles.container}>
@@ -70,7 +70,7 @@ class BadInstagramCloneApp extends Component {
     };
 }
 
-export default class CameraDemo extends Component {
+export default class CameraDemo extends PureComponent {
     static navigationOptions = ({navigation}) => ({
         headerTitle: "CameraDemo",
         headerStyle: {backgroundColor: '#fff', height: Platform.OS == "ios" ? 64 : 48},

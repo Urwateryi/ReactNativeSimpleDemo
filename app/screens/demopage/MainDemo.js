@@ -1,7 +1,7 @@
 /**
  * Description:引导页
  */
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {
     StyleSheet,
     FlatList,
@@ -127,7 +127,7 @@ var strList=[
     },
 ];
 
-export default class MainDemo extends Component{
+export default class MainDemo extends PureComponent{
     render() {
         return (
             <View style={styles.container}>

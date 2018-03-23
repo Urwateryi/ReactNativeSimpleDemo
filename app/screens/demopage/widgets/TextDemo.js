@@ -41,7 +41,7 @@
 // textDecorationStyle
 // writingDirection
 
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {
     StyleSheet,
     Platform,
@@ -56,7 +56,7 @@ import {
     LOGIN_NAME
 } from "../../../config/Constants";
 
-export default class TextDemo extends Component {
+export default class TextDemo extends PureComponent {
 
     static navigationOptions = ({navigation}) => ({
         headerTitle: "TextDemo",

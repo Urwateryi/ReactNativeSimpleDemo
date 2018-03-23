@@ -1,7 +1,7 @@
-import React,{Component} from 'react';
+import React,{PureComponent} from 'react';
 import {Image} from 'react-native';
 
-export default class TabBarItem extends Component {
+export default class TabBarItem extends PureComponent {
 
     render() {
         return(

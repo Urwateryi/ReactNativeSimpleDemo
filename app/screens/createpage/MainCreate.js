@@ -3,7 +3,7 @@
  * 参考http://bbs.reactnative.cn/topic/2480/bind%E5%92%8C%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0-%E5%93%AA%E4%B8%AA%E6%9B%B4%E5%A5%BD%E5%91%A2/2
  * Description:
  */
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {
     StyleSheet,
     View,
@@ -13,7 +13,7 @@ import {
 
 import Colors from '../../resources/Colors'
 
-export default class MainCreate extends Component {
+export default class MainCreate extends PureComponent {
     //----------------------跳转，方法1：:-------------------------------------
     // render() {
     //     return (

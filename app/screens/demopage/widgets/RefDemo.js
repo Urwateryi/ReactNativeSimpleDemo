@@ -5,7 +5,7 @@
  * Author: zoe
  * Time: 2018/3/15 0015
  */
-import React, {Component} from 'react';
+import React, {PureComponent } from 'react';
 import {
     StyleSheet,
     Platform,
@@ -16,7 +16,7 @@ import {
 } from 'react-native'
 import Images from "../../../resources/Images";
 
-export default class RefDemo extends Component {
+export default class RefDemo extends PureComponent {
 
     static navigationOptions = ({navigation}) => ({
         headerTitle: "RefDemo",

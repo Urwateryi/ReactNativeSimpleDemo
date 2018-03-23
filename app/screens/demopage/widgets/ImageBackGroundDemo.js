@@ -9,7 +9,7 @@
  * Time: 2018/3/15 0015
  */
 
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {
     StyleSheet,
     Platform,
@@ -22,7 +22,7 @@ import {
 
 import Images from "../../../resources/Images";
 
-export default class ImageBackGroundDemo extends Component {
+export default class ImageBackGroundDemo extends PureComponent {
 
     static navigationOptions = ({navigation}) => ({
         headerTitle: "ImageBackGroundDemo",

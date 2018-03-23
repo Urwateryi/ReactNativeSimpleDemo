@@ -17,7 +17,7 @@ import {
     Platform
 } from 'react-native'
 
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import Images from "../../../resources/Images";
 
 // import { RNCamera} from 'react-native-camera';
@@ -39,7 +39,7 @@ var photoOptions={
 
 var pic_local,pic_net,pic_res,type;
 
-// class BadInstagramCloneApp extends Component {
+// class BadInstagramCloneApp extends PureComponent {
 //     render() {
 //         return (
 //             <View style={styles.container}>
@@ -75,7 +75,7 @@ var pic_local,pic_net,pic_res,type;
 // }
 
 
-export default class ImageDemo extends Component {
+export default class ImageDemo extends PureComponent {
     static navigationOptions = ({navigation}) => ({
         headerTitle: "ImageDemo",
         headerStyle: {backgroundColor: '#fff', height: Platform.OS == "ios" ? 64 : 48},

@@ -10,6 +10,7 @@ import {
 
 // 第三方框架
 import Storage from 'react-native-storage';
+import { PureComponent } from "react";
 
 const storage = new Storage({
     // 最大容量，默认值1000条数据循环存储
@@ -51,7 +52,7 @@ global.storage = storage;
 
 
 //------------------------------------
-// import React, { Component } from 'react';
+// import React, { PureComponent } from 'react';
 // import Storage from 'react-native-storage';
 //
 // import {
@@ -66,7 +67,7 @@ global.storage = storage;
 // var defaultExpires = 1000*3600*24;
 // var size = 1000;
 //
-// export default class MySorage extends Component{
+// export default class MySorage extends PureComponent{
 //
 //     static _getStorage(){
 //         if(storage==undefined){

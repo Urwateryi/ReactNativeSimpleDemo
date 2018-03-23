@@ -1,7 +1,7 @@
 /**
  * Description:
  */
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {
     StyleSheet,
     View,
@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import Colors from "../../resources/Colors";
 
-export default class MainMine extends Component {
+export default class MainMine extends PureComponent {
     render() {
         return (
             <View style={styles.container}>

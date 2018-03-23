@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {StyleSheet, Image,View} from 'react-native';
 
 import Images from "./resources/Images";
@@ -14,7 +14,7 @@ import Colors from "./resources/Colors";
 /**
  * Description:首页
  */
-export default class HomePage extends Component {
+export default class HomePage extends PureComponent {
     constructor(props){
         super(props);
         this.state = {
@@ -37,7 +37,7 @@ export default class HomePage extends Component {
         );
     }
 
-    _renderTabarItems(selectedTab,icon,selectedIcon,Component){
+    _renderTabarItems(selectedTab,icon,selectedIcon,PureComponent){
         return (
             <TabNavigator.Item
                 selected={this.state.selectedTab === selectedTab}
@@ -48,7 +48,7 @@ export default class HomePage extends Component {
                 renderSelectedIcon={() => <Image style={styles.icon} source={selectedIcon} />}
                 onPress={() => this.setState({ selectedTab: selectedTab })}
             >
-                <Component />
+                <PureComponent />
             </TabNavigator.Item>
         )
     }

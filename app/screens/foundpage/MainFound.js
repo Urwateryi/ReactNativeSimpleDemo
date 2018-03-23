@@ -1,7 +1,7 @@
 /**
  * Description:
  */
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {
     StyleSheet,
     View,
@@ -10,7 +10,7 @@ import {
 
 import Colors from '../../resources/Colors'
 
-export default class MainFound extends Component {
+export default class MainFound extends PureComponent {
     render() {
         return (
             <View style={styles.container}>

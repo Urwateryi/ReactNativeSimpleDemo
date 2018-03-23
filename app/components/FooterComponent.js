@@ -10,9 +10,9 @@ import {
     Text
 } from 'react-native'
 
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
-export default class FooterComponent extends Component {
+export default class FooterComponent extends PureComponent {
     render() {
         return (
             <View style={styles.container}>

@@ -9,7 +9,7 @@
  * Author: zoe
  * Time: 2018/3/15 0015
  */
-import React, {Component} from 'react';
+import React, {  PureComponent } from 'react';
 import {
     StyleSheet,
     Platform,
@@ -18,7 +18,7 @@ import {
     Text,
 } from 'react-native'
 
-export default class InputDemo extends Component {
+export default class InputDemo extends PureComponent {
 
     static navigationOptions = ({navigation}) => ({
         headerTitle: "InputDemo",

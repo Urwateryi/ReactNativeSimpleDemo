@@ -12,7 +12,7 @@
  * Author: zoe
  * Time: 2018/3/15 0015
  */
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {
     StyleSheet,
     Platform,
@@ -23,7 +23,7 @@ import {
     Dimensions
 } from 'react-native'
 
-export default class WebViewDemo extends Component {
+export default class WebViewDemo extends PureComponent {
 
     static navigationOptions = ({navigation}) => ({
         headerTitle: "WebViewDemo",

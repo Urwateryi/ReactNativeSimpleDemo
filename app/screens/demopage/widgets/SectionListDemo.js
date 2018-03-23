@@ -9,7 +9,7 @@
  * Author: zoe
  * Time: 2018/3/15 0015
  */
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
     StyleSheet,
     Platform,
@@ -22,7 +22,7 @@ import HeaderComponent from '../../../components/HeaderComponent'
 import FooterComponent from '../../../components/FooterComponent'
 import Colors from "../../../resources/Colors";
 
-export default class SectionListDemo extends Component {
+export default class SectionListDemo extends PureComponent {
 
     static navigationOptions = ({ navigation }) => ({
         headerTitle : "SectionListDemo",

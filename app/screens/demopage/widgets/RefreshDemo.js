@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { PureComponent } from 'react';
 import {
     View,
     Text,
@@ -10,7 +10,7 @@ const dimensions = require('Dimensions');
 //获取屏幕的宽度和高度
 const {width, height} = dimensions.get('window');
 
-export default class RefreshDemo extends Component {
+export default class RefreshDemo extends PureComponent {
 
     static navigationOptions = ({navigation}) => ({
         headerTitle: "RefreshDemo",

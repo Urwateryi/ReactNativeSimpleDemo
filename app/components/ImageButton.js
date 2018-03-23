@@ -1,11 +1,11 @@
 /**
  * Description:图片按钮
  */
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {TouchableOpacity, Image} from 'react-native';
 
 //导出方式1：ES6 直接使用export default就可以导出了
-export default class ImageButton extends Component {
+export default class ImageButton extends PureComponent {
     render() {
         return (
             <TouchableOpacity activeOpacity={0.9} onPress={this.props.onPress}>
