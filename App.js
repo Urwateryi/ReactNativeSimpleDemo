@@ -25,6 +25,7 @@ import StorageDemo from "./app/screens/demopage/widgets/StorageDemo";
 import RefreshDemo from "./app/screens/demopage/widgets/RefreshDemo";
 import SectionListDemo from "./app/screens/demopage/widgets/SectionListDemo";
 import TxtPicPageDemo from "./app/screens/demopage/widgets/TxtPicPageDemo";
+import NetDemo from "./app/screens/demopage/widgets/NetDemo";
 
 //构造方法为TabNavigator(RouteConfigs, TabNavigatorConfig)
 const HomeTab = TabNavigator(
@@ -158,7 +159,8 @@ const AllNavigator = StackNavigator(
         StorageDemo:{screen:StorageDemo},
         RefreshDemo:{screen:RefreshDemo},
         SectionListDemo:{screen:SectionListDemo},
-        TxtPicPageDemo:{screen:TxtPicPageDemo}
+        TxtPicPageDemo:{screen:TxtPicPageDemo},
+        NetDemo:{screen:NetDemo}
     },
 //还可以有参数StackNavigatorConfig，这个参数主要是配置整个路由的，包括跳转动画，跳转方式等。
     {
