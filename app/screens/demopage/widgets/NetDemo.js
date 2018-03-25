@@ -23,6 +23,7 @@ import Images from "../../../resources/Images";
 import Colors from "../../../resources/Colors";
 import HeaderComponent from "../../../components/HeaderComponent";
 import FooterComponent from "../../../components/FooterComponent";
+import NetUtil from "../../../utils/NetUtil";
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 
@@ -33,7 +34,24 @@ for (var i = 0;
     datas.push({ key : '标题' + i, content : i + '条内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容' });
 }
 
+var params=[];
+params.push('showapi_appid','59980');
+params.push('showapi_sign','2c4a65a3eddc465fb57297986084b123');
+
 export default class NetDemo extends PureComponent {
+
+
+    componentDidMount(){
+        return NetUtil.PostWithHttpParam(
+            'https://www.showapi.com/api/view/341/2',
+            params,
+            jsonData=>{
+                alert(jsonData.toString())
+            },
+            error=>{
+                alert(error)
+            });
+    }
 
     static navigationOptions = ({ navigation }) => ({
         headerTitle : "测试网络请求",
