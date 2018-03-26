@@ -1,3 +1,5 @@
+import JsonUtil from "./JsonUtil";
+
 /**
  * Description:网络请求工具类
  *
@@ -17,25 +19,25 @@ export default class NetUtil {
      * @param failure 失败回调 （param:ERROR）
      * @constructor
      */
-    static GET(url, param, success, failure) {
+    static GET(url, params, success, failure) {
 
         //总长度
         var totalParam = '';
 
         //判断字典参数是否有值
         //把字典转换为字符串，如果字典为空，转换为'「」'
-        var jsonStr = JSON.stringify(param);
+        var jsonStr=JSON.stringify(params);
 
         if (jsonStr != '{}') {
 
             //符号
             var mark = '?';
             var i = 0;
-            for (key in param) {
+            for (key in params) {
                 if (i > 0) {
                     mark = '&'
                 }
-                var value = param[key];
+                var value = params[key];
                 var paramStr = mark + key + '=' + value;
                 totalParam += paramStr;
                 i++;
@@ -61,32 +63,18 @@ export default class NetUtil {
      * @param failure 失败回调 （param:ERROR）
      * @constructor
      */
-    static PostWithHttpParam(url, param, success, failure){
-        var body='';
+    static PostWithHttpParam(url, params, success, failure){
 
-        //判断字典参数是否有值
-        //把字典转换为字符串，如果字典唯恐，转换为'「」'
-        var jsonStr=JSON.stringify(param);
-        if (jsonStr!='{}'){
-            //符号
-            var mark='';
-            var i=0;
-            for (key in param){
-                if(i>0){
-                    mark='&'
-                }
-                var value=param[key];
-                var paramStr=mark+key+'='+value;
-                body+=paramStr;
-                i++;
-            }
+        var body = '';
+        for (var item of params.entries()) {//拼接body
+            body += item[0] + "=" + item[1] + "&";
         }
+        body = body.substring(0, body.length - 1);
 
-        console.log(body);
         var requestOptional={
             method:'POST',
             headers:{
-                'Content-Type':'application/x-www-form-urlencoded'
+                'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'
             },
             body:body
         };
@@ -110,14 +98,20 @@ export default class NetUtil {
      * @param failure 失败回调 （param:ERROR）
      * @constructor
      */
-    static PostWithJsonParam(url,param,success,failure){
-        var paramStr=JSON.stringify(param);
+    static PostWithJsonParam(url,params,success,failure){
+
+        console.log(params)
+
+        // var paramStr=JSON.stringify(params);
+        var paramStr=JsonUtil.mapToJson(params);
+
+        console.log(paramStr)
 
         //post请求描述
         var requestDesc={
             method:'POST',
             headers:{
-                'Content-Type':'application/json'
+                'Content-Type':'application/json;charset=UTF-8'
             },
             body:paramStr
         };
@@ -126,9 +120,11 @@ export default class NetUtil {
         fetch(url,requestDesc)
             .then((response)=>response.json())
             .then((json)=>{
+                console.log(json)
                 success(json);
             })
             .catch((error)=>{
+                console.log(error)
                 failure(error);
             })
     }

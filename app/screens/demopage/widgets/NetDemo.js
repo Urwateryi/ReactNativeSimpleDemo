@@ -24,34 +24,11 @@ import Colors from "../../../resources/Colors";
 import HeaderComponent from "../../../components/HeaderComponent";
 import FooterComponent from "../../../components/FooterComponent";
 import NetUtil from "../../../utils/NetUtil";
+import ApiAddress from '../../../config/ApiAddress'
 
-const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
-
-var datas = [];
-for (var i = 0;
-    i < 50;
-    i++) {
-    datas.push({ key : '标题' + i, content : i + '条内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容' });
-}
-
-var params=[];
-params.push('showapi_appid','59980');
-params.push('showapi_sign','2c4a65a3eddc465fb57297986084b123');
+var itemArr = [];
 
 export default class NetDemo extends PureComponent {
-
-
-    componentDidMount(){
-        return NetUtil.PostWithHttpParam(
-            'https://www.showapi.com/api/view/341/2',
-            params,
-            jsonData=>{
-                alert(jsonData.toString())
-            },
-            error=>{
-                alert(error)
-            });
-    }
 
     static navigationOptions = ({ navigation }) => ({
         headerTitle : "测试网络请求",
@@ -64,21 +41,73 @@ export default class NetDemo extends PureComponent {
         this.state = {
             // 下拉刷新
             isRefresh : false,
+            contentList : [],
         }
+    }
+
+    componentDidMount() {
+        this.getSingerList();
+    }
+
+    getSingerList(){
+        var params = new Map();
+        params.set('showapi_appid', '60195');
+        params.set('showapi_sign', '83a8eb462be74584807491f5cfe43c24');
+
+        NetUtil.PostWithJsonParam(
+            ApiAddress.HOST,
+            params,
+            jsonData => {
+                this.setState({
+                    contentList : jsonData.showapi_res_body.contentlist,
+                });
+
+                for (var i = 0; i < this.state.contentList.length; i++) {
+                    itemArr.push(this.state.contentList[i]);
+                }
+            },
+            error => {
+                alert('error///' + error);
+            });
+    }
+
+    /**
+     * 获取笑话列表
+     */
+    getJokeList(){
+        var params = new Map();
+        params.set('showapi_appid', '60195');
+        params.set('showapi_sign', '83a8eb462be74584807491f5cfe43c24');
+
+        NetUtil.PostWithHttpParam(
+            ApiAddress.HOST,
+            params,
+            jsonData => {
+                this.setState({
+                    contentList : jsonData.showapi_res_body.contentlist,
+                });
+
+                for (var i = 0; i < this.state.contentList.length; i++) {
+                    itemArr.push(this.state.contentList[i]);
+                }
+            },
+            error => {
+                alert('error///' + error);
+            });
     }
 
     //Item布局
     renderItem({ item }) {
         return (
             <TouchableOpacity style={styles.item} activeOpacity={1} onPress={this.clickItem.bind(this, item)}>
-                <ItemPic1 source={Images.other_test.bg_beauty} style={{ flex : 0.25, margin : 5 }}/>
+                <ItemPic1 source={{uri:item.img}} style={{ flex : 0.25, margin : 5 }}/>
                 <View style={styles.txt_container}>
                     <Heading2 numberOfLines={1}>
-                        {item.key}
+                        {item.title}
                     </Heading2>
 
                     <Paragraph numberOfLines={2}>
-                        {item.content}
+                        {item.ct}
                     </Paragraph>
                 </View>
             </TouchableOpacity>
@@ -95,8 +124,8 @@ export default class NetDemo extends PureComponent {
 
     render() {
         return (
-            <AnimatedFlatList
-                data={datas}
+            <FlatList
+                data={itemArr}
                 keyExtractor={this._keyExtractor}
                 renderItem={this.renderItem.bind(this)}
 
@@ -105,7 +134,7 @@ export default class NetDemo extends PureComponent {
                 ListFooterComponent={FooterComponent}
                 //下拉刷新相关
                 onRefresh={() => {
-                    alert('下拉哦')
+                    // this.getJokeList();
                 }}
                 refreshing={this.state.isRefresh}
             />
