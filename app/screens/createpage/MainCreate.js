@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 
 import Colors from '../../resources/Colors'
+import { jumpPager } from "../../utils/PageUtil";
 
 export default class MainCreate extends PureComponent {
     //----------------------跳转，方法1：:-------------------------------------
@@ -72,9 +73,11 @@ export default class MainCreate extends PureComponent {
     }
 
     _clickItem(){
-        console.log("test")
-        const { navigate } = this.props.navigation;
-        navigate('TextPage');
+        // console.log("test")
+        // const { navigate } = this.props.navigation;
+        // navigate('TextDemo');
+
+        jumpPager(this.props.navigation.navigate,'TextDemo')
     }
 }
 

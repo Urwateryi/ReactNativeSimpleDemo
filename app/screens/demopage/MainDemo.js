@@ -16,6 +16,7 @@ import StorageDemo from "./widgets/StorageDemo";
 
 import Colors from '../../resources/Colors'
 import TxtPicPageDemo from "./widgets/TxtPicPageDemo";
+import {jumpPager} from "../../utils/PageUtil";
 
 var strList=[
     {
@@ -155,9 +156,13 @@ export default class MainDemo extends PureComponent{
 
     //点击列表点击每一行
     clickItem(item) {
-        console.log(item.content+"///"+item.key)
-        const {navigate} = this.props.navigation;
-        navigate(item.content);
+        //跳转方法一：
+        // console.log(item.content+"///"+item.key)
+        // const {navigate} = this.props.navigation;
+        // navigate(item.content);
+
+        //跳转方法二：
+        jumpPager(this.props.navigation.navigate,item.content)
     }
 }
 
