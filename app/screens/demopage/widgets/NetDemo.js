@@ -26,6 +26,7 @@ import FooterComponent from "../../../components/FooterComponent";
 import NetUtil from "../../../utils/NetUtil";
 import ApiAddress from '../../../config/ApiAddress'
 
+const MAX_RESULT=20;//每页最大记录数
 var itemArr = [];
 
 export default class NetDemo extends PureComponent {
@@ -41,7 +42,10 @@ export default class NetDemo extends PureComponent {
         this.state = {
             // 下拉刷新
             isRefresh : false,
+            hasMore: true,
+            isLoading:false,
             contentList : [],
+            page:1,
         }
     }
 
@@ -78,6 +82,8 @@ export default class NetDemo extends PureComponent {
         var params = new Map();
         params.set('showapi_appid', '60195');
         params.set('showapi_sign', '83a8eb462be74584807491f5cfe43c24');
+        params.set('page', this.state.page);
+        params.set('maxResult', MAX_RESULT);
 
         NetUtil.PostWithHttpParam(
             ApiAddress.HOST,
@@ -123,6 +129,15 @@ export default class NetDemo extends PureComponent {
     //不设置这个的话，会报这个警告：Each child in an array or iterator should have a unique "key" prop.
     _keyExtractor = (item) => item.img;
 
+    //加载更多
+    loadMore(){
+        if (!this.state.hasMore) {
+            return
+        }
+
+        this.setState({page:this.state.page++});
+    }
+
     render() {
         return (
             <FlatList
@@ -135,8 +150,14 @@ export default class NetDemo extends PureComponent {
                 ListFooterComponent={FooterComponent}
                 //下拉刷新相关
                 onRefresh={() => {
+                    // this.setState({page:1});
                     // this.getJokeList();
                 }}
+
+                // //上拉加载更多
+                // onEndReached={this.loadMore.bind(this)}
+                // onEndReachedThreshold={-0.1}
+
                 refreshing={this.state.isRefresh}
             />
         );

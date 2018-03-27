@@ -10,8 +10,18 @@ import {
     Dimensions
 } from 'react-native'
 
+/**
+ * 获取系统宽高
+ */
 export const {width,height} = Dimensions.get('window');
 
+/**
+ * 页面跳转
+ *
+ * @param navigate
+ * @param page
+ * @param params
+ */
 export const jumpPager = (navigate,page,params) => {
     if (params != null) {
         navigate(page,{
@@ -22,6 +32,13 @@ export const jumpPager = (navigate,page,params) => {
     }
 }
 
+/**
+ * 获取随机数
+ *
+ * @param min
+ * @param max
+ * @returns {number}
+ */
 export function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
