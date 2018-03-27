@@ -46,7 +46,7 @@ export default class NetDemo extends PureComponent {
     }
 
     componentDidMount() {
-        this.getSingerList();
+        this.getJokeList();
     }
 
     getSingerList(){
