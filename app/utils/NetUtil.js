@@ -47,6 +47,7 @@ export default class NetUtil {
         //拼接url
         url += totalParam;
         fetch(url)
+            .then(this.checkStatus)
             .then((response) => response.json())
             .then((json) => {
                 success(json);
@@ -80,6 +81,7 @@ export default class NetUtil {
         };
 
         fetch(url,requestOptional)
+            .then(this.checkStatus)
             .then((response)=>response.json())
             .then((json)=>{
                 success(json);
@@ -118,6 +120,7 @@ export default class NetUtil {
 
         //发送post请求
         fetch(url,requestDesc)
+            .then(this.checkStatus)
             .then((response)=>response.json())
             .then((json)=>{
                 console.log(json)
@@ -127,5 +130,24 @@ export default class NetUtil {
                 console.log(error)
                 failure(error);
             })
+    }
+
+    /**
+     * fetch请求对某些错误http状态不会reject
+     * 这主要是由fetch返回promise导致的，
+     * 因为fetch返回的promise在某些错误的http状态下如400、500等不会reject，
+     * 相反它会被resolve；只有网络错误会导致请求不能完成时，fetch 才会被 reject；
+     * 所以一般会对fetch请求做一层封装
+     *
+     * @param response
+     * @returns {*}
+     */
+    checkStatus(response) {
+        if (response.status >= 200 && response.status < 300) {
+            return response;
+        }
+        const error = new Error(response.statusText);
+        error.response = response;
+        throw error;
     }
 }

@@ -37,7 +37,7 @@ export default class JsonUtil extends Component {
      * */
     static strMapToObj(strMap) {
         let obj = Object.create(null);
-        for (let [k, v] of strMap) {
+        for (var [k, v] of strMap) {
             obj[k] = v;
         }
         return obj;
@@ -47,7 +47,7 @@ export default class JsonUtil extends Component {
      * */
     static objToStrMap(obj) {
         let strMap = new Map();
-        for (let k of Object.keys(obj)) {
+        for (var k of Object.keys(obj)) {
             strMap.set(k, obj[k]);
         }
         return strMap;

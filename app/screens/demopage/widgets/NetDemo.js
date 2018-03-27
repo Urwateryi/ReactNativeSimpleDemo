@@ -116,11 +116,12 @@ export default class NetDemo extends PureComponent {
 
     //点击列表点击每一行
     clickItem(item) {
-        alert(item.content)
+        alert(item.title)
     }
 
     //此函数用于为给定的item生成一个不重复的key
-    _keyExtractor = (item) => item.key;
+    //不设置这个的话，会报这个警告：Each child in an array or iterator should have a unique "key" prop.
+    _keyExtractor = (item) => item.img;
 
     render() {
         return (
