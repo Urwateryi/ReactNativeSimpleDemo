@@ -160,7 +160,7 @@ const AllNavigator = StackNavigator(
         RefreshDemo:{screen:RefreshDemo},
         SectionListDemo:{screen:SectionListDemo},
         TxtPicPageDemo:{screen:TxtPicPageDemo},
-        NetDemo:{screen:NetDemo}
+        NetDemo:{screen:NetDemo},
     },
 //还可以有参数StackNavigatorConfig，这个参数主要是配置整个路由的，包括跳转动画，跳转方式等。
     {

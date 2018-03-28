@@ -13,21 +13,19 @@ import {
     View,
     FlatList,
     Platform,
-    Animated,
+    Text,
+    ActivityIndicator,
     TouchableOpacity
 } from 'react-native'
 
 import { Heading2, Paragraph } from '../../../components/TextComponent'
 import { ItemPic1 } from '../../../components/ImageComponent'
-import Images from "../../../resources/Images";
 import Colors from "../../../resources/Colors";
-import HeaderComponent from "../../../components/HeaderComponent";
-import FooterComponent from "../../../components/FooterComponent";
 import NetUtil from "../../../utils/NetUtil";
 import ApiAddress from '../../../config/ApiAddress'
+import { width, height } from "../../../utils/PageUtil";
 
-const MAX_RESULT=20;//每页最大记录数
-var itemArr = [];
+const MAX_RESULT = 20;//每页最大记录数
 
 export default class NetDemo extends PureComponent {
 
@@ -41,11 +39,11 @@ export default class NetDemo extends PureComponent {
         //状态
         this.state = {
             // 下拉刷新
-            isRefresh : false,
-            hasMore: true,
-            isLoading:false,
-            contentList : [],
-            page:1,
+            refreshing : false,
+            loading : false,
+            error : false,
+            page : 1,
+            dataSource : [],
         }
     }
 
@@ -53,32 +51,10 @@ export default class NetDemo extends PureComponent {
         this.getJokeList();
     }
 
-    getSingerList(){
-        var params = new Map();
-        params.set('showapi_appid', '60195');
-        params.set('showapi_sign', '83a8eb462be74584807491f5cfe43c24');
-
-        NetUtil.PostWithJsonParam(
-            ApiAddress.HOST,
-            params,
-            jsonData => {
-                this.setState({
-                    contentList : jsonData.showapi_res_body.contentlist,
-                });
-
-                for (var i = 0; i < this.state.contentList.length; i++) {
-                    itemArr.push(this.state.contentList[i]);
-                }
-            },
-            error => {
-                alert('error///' + error);
-            });
-    }
-
     /**
      * 获取笑话列表
      */
-    getJokeList(){
+    getJokeList() {
         var params = new Map();
         params.set('showapi_appid', '60195');
         params.set('showapi_sign', '83a8eb462be74584807491f5cfe43c24');
@@ -90,23 +66,75 @@ export default class NetDemo extends PureComponent {
             params,
             jsonData => {
                 this.setState({
-                    contentList : jsonData.showapi_res_body.contentlist,
+                    dataSource : jsonData.showapi_res_body.contentlist,
+                    error : jsonData.error || null,
+                    loading : false,
+                    refreshing : false,
                 });
-
-                for (var i = 0; i < this.state.contentList.length; i++) {
-                    itemArr.push(this.state.contentList[i]);
-                }
             },
             error => {
-                alert('error///' + error);
+                console.log('error///' + error);
+                this.setState({ error : err, loading : false, refreshing : false });
             });
     }
 
+    /**
+     * 空页面
+     * @returns {*}
+     */
+    renderEmpty() {
+        return (
+            <View style={styles.container}>
+                <Text style={styles.text}>暂无数据</Text>
+            </View>
+        )
+    }
+
+    /**
+     * 头部
+     * @returns {*}
+     */
+    renderHeader() {
+        return (
+            <View style={{
+                height : 44,
+                width : width,
+                justifyContent : 'center',
+                backgroundColor : 'red',
+                alignItems : 'center'
+            }} activeOpacity={1}>
+                <Text>{'我是头部'}</Text>
+            </View>
+        )
+    }
+
+    /**
+     * 底部
+     * @returns {*}
+     */
+    renderFooter() {
+        //打开这句，会报错，为啥？
+        // if (!this.state.loading) {
+        //     return null;
+        // }
+        return (
+            <View
+                style={{
+                    paddingVertical : 20,
+                    borderTopWidth : 1,
+                    borderColor : "#CED0CE"
+                }}
+            >
+                <ActivityIndicator animating size="large"/>
+            </View>
+        );
+    }
+
     //Item布局
-    renderItem({ item }) {
+    renderItem = ({item}) => {
         return (
             <TouchableOpacity style={styles.item} activeOpacity={1} onPress={this.clickItem.bind(this, item)}>
-                <ItemPic1 source={{uri:item.img}} style={{ flex : 0.25, margin : 5 }}/>
+                <ItemPic1 source={{ uri : item.img }} style={{ flex : 0.25, margin : 5 }}/>
                 <View style={styles.txt_container}>
                     <Heading2 numberOfLines={1}>
                         {item.title}
@@ -120,6 +148,21 @@ export default class NetDemo extends PureComponent {
         )
     }
 
+    handleRefresh = () => {
+        this.setState({
+            page : 1,
+            refreshing : true,
+            loading : false,
+            dataSource : [],
+        }, () => {
+            this.getJokeList();
+        });
+    }
+
+    handleLoadMore = () => {
+        alert('上拉了')
+    }
+
     //点击列表点击每一行
     clickItem(item) {
         alert(item.title)
@@ -129,42 +172,47 @@ export default class NetDemo extends PureComponent {
     //不设置这个的话，会报这个警告：Each child in an array or iterator should have a unique "key" prop.
     _keyExtractor = (item) => item.img;
 
-    //加载更多
-    loadMore(){
-        if (!this.state.hasMore) {
-            return
-        }
-
-        this.setState({page:this.state.page++});
-    }
-
     render() {
         return (
             <FlatList
-                data={itemArr}
+                data={this.state.dataSource}
                 keyExtractor={this._keyExtractor}
-                renderItem={this.renderItem.bind(this)}
+                renderItem={this.renderItem}
 
-                //添加头尾布局
-                ListHeaderComponent={HeaderComponent}
-                ListFooterComponent={FooterComponent}
-                //下拉刷新相关
-                onRefresh={() => {
-                    // this.setState({page:1});
-                    // this.getJokeList();
-                }}
+                //下拉刷新
+                //表明list是否在refresh的状态。
+                refreshing={this.state.refreshing}//在等待加载新数据时将此属性设为true，列表就会显示出一个正在加载的符号。
+                onRefresh={this.handleRefresh}
 
-                // //上拉加载更多
-                // onEndReached={this.loadMore.bind(this)}
-                // onEndReachedThreshold={-0.1}
+                //上拉加载更多
+                //当列表被滚动到距离内容最底部不足onEndReachedThreshold的距离时调用。
+                onEndReached={this.handleLoadMore}
+                //执行上啦的时候10%执行 决定当距离内容最底部还有多远时触发onEndReached回调。注意此参数是一个比值而非像素单位。比如，0.5表示距离内容最底部的距离为当前列表可见长度的一半时触发。
+                onEndReachedThreshold={0}
 
-                refreshing={this.state.isRefresh}
+                //可选优化项。但是实际测试中，如果不做该项优化，性能会差很多。所以强烈建议做此项优化！
+                //如果不做该项优化，每个列表都需要事先渲染一次，动态地取得其渲染尺寸，然后再真正地渲染到页面中。
+                //如果预先知道列表中的每一项的高度(ITEM_HEIGHT)和其在父组件中的偏移量(offset)和位置(index)，就能减少一次渲染。这是很关键的性能优化点。
+                getItemLayout={(data, index) => (
+                    { length : 250, offset : 250 * index, index }
+                )}
+
+                //加载头部
+                ListHeaderComponent={this.renderHeader}
+                //加载底部
+                ListFooterComponent={this.renderFooter}
             />
         );
     }
 }
 
 const styles = StyleSheet.create({
+    container : {
+        flex : 1,
+        justifyContent : 'center',//定制主轴
+        alignContent : 'center',
+        backgroundColor : Colors.bg,
+    },
     item : {
         flexDirection : 'row',
         backgroundColor : 'white',
@@ -176,5 +224,8 @@ const styles = StyleSheet.create({
     txt_container : {
         flex : 0.75,
         marginLeft : 5
+    }, text : {
+        fontSize : 30,
+        color : Colors.gray,
     }
 });
