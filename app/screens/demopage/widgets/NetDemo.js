@@ -67,14 +67,17 @@ export default class NetDemo extends PureComponent {
             jsonData => {
                 this.setState({
                     dataSource : jsonData.showapi_res_body.contentlist,
-                    error : jsonData.error || null,
                     loading : false,
                     refreshing : false,
                 });
             },
             error => {
                 console.log('error///' + error);
-                this.setState({ error : err, loading : false, refreshing : false });
+                this.setState({
+                    error : err,
+                    loading : false,
+                    refreshing : false
+                });
             });
     }
 
@@ -148,6 +151,9 @@ export default class NetDemo extends PureComponent {
         )
     }
 
+    /**
+     * 下啦刷新
+     */
     handleRefresh = () => {
         this.setState({
             page : 1,
@@ -159,8 +165,17 @@ export default class NetDemo extends PureComponent {
         });
     }
 
+    /**
+     * 上拉加载更多
+     */
     handleLoadMore = () => {
-        alert('上拉了')
+        this.setState({
+            page : this.state.page++,
+            refreshing : false,
+            loading : true,
+        }, () => {
+            this.getJokeList();
+        });
     }
 
     //点击列表点击每一行
