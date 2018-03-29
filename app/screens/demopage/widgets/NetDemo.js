@@ -68,7 +68,7 @@ export default class NetDemo extends PureComponent {
             jsonData => {
                 this.setState({
                     //拼接数据
-                    dataSource : jsonData.showapi_res_body.contentlist,
+                    dataSource : this.state.dataSource.concat(jsonData.showapi_res_body.contentlist),
                     loading : false,
                     refreshing : false,
                 });
@@ -178,44 +178,16 @@ export default class NetDemo extends PureComponent {
      */
     handleLoadMore = () => {
         if (!this.onEndReachedCalledDuringMomentum) {
-            // alert('上拉一下');
-            this.more();
-            this.onEndReachedCalledDuringMomentum = true;
+            this.setState({
+                page: this.state.page++,
+                refreshing: false,
+                loading: true,
+            }, () => {
+                // alert('上拉一下');
+                this.getJokeList();
+                this.onEndReachedCalledDuringMomentum = true;
+            });
         }
-    }
-
-    more = () => {
-        this.setState({
-            page : this.state.page++,
-            refreshing : false,
-            loading : true,
-        }, () => {
-            var params = new Map();
-            params.set('showapi_appid', '60195');
-            params.set('showapi_sign', '83a8eb462be74584807491f5cfe43c24');
-            params.set('page', this.state.page);
-            params.set('maxResult', MAX_RESULT);
-
-            NetUtil.PostWithHttpParam(
-                ApiAddress.HOST,
-                params,
-                jsonData => {
-                    this.setState({
-                        //拼接数据
-                        dataSource : this.state.dataSource.concat(jsonData.showapi_res_body.contentlist),
-                        loading : false,
-                        refreshing : false,
-                    });
-                },
-                err => {
-                    console.log('error///' + err.toString());
-                    this.setState({
-                        error : err.toString(),
-                        loading : false,
-                        refreshing : false
-                    });
-                });
-        });
     }
 
     render() {
