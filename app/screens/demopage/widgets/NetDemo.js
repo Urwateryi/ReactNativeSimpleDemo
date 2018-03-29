@@ -36,12 +36,13 @@ export default class NetDemo extends PureComponent {
 
     constructor(props) {
         super(props);
-        //状态
+        this.onEndReachedCalledDuringMomentum = true;
+        //状态机
         this.state = {
             // 下拉刷新
             refreshing : false,
             loading : false,
-            error : false,
+            error : '',
             page : 1,
             dataSource : [],
         }
@@ -66,15 +67,16 @@ export default class NetDemo extends PureComponent {
             params,
             jsonData => {
                 this.setState({
+                    //拼接数据
                     dataSource : jsonData.showapi_res_body.contentlist,
                     loading : false,
                     refreshing : false,
                 });
             },
-            error => {
-                console.log('error///' + error);
+            err => {
+                console.log('error///' + err.toString());
                 this.setState({
-                    error : err,
+                    error : err.toString(),
                     loading : false,
                     refreshing : false
                 });
@@ -85,7 +87,7 @@ export default class NetDemo extends PureComponent {
      * 空页面
      * @returns {*}
      */
-    renderEmpty() {
+    renderEmpty = () => {
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>暂无数据</Text>
@@ -97,7 +99,7 @@ export default class NetDemo extends PureComponent {
      * 头部
      * @returns {*}
      */
-    renderHeader() {
+    renderHeader = () => {
         return (
             <View style={{
                 height : 44,
@@ -111,30 +113,26 @@ export default class NetDemo extends PureComponent {
         )
     }
 
-    /**
-     * 底部
-     * @returns {*}
-     */
-    renderFooter() {
-        //打开这句，会报错，为啥？
-        // if (!this.state.loading) {
-        //     return null;
-        // }
+    renderFooter = () => {
+        if (!this.state.loading) {
+            return null;
+        }
         return (
-            <View
-                style={{
-                    paddingVertical : 20,
-                    borderTopWidth : 1,
-                    borderColor : "#CED0CE"
-                }}
-            >
+            <View style={styles.bg_footer}>
+                {/*默认的有四个属性: size, color, animating,hidesWhenStopped;
+                * size: 是个枚举值: large , small 默认是small
+                * 在安卓里面的话可以设置大小类型为number的,只适用在安卓里面
+                * color: 默认是white
+                * animating:bool类型 默认是显示true 隐藏是false
+                * hidesWhenStopped: bool类型 在没有动画的时候是否隐藏 默认是true
+                size 是个枚举值: large , small 默认是small* 在安卓里面的话可以设置大小类型为number的,只适用在安卓里面*/}
                 <ActivityIndicator animating size="large"/>
             </View>
         );
-    }
+    };
 
     //Item布局
-    renderItem = ({item}) => {
+    renderItem = ({ item }) => {
         return (
             <TouchableOpacity style={styles.item} activeOpacity={1} onPress={this.clickItem.bind(this, item)}>
                 <ItemPic1 source={{ uri : item.img }} style={{ flex : 0.25, margin : 5 }}/>
@@ -151,6 +149,15 @@ export default class NetDemo extends PureComponent {
         )
     }
 
+    //点击列表点击每一行
+    clickItem = (item) => {
+        alert(item.title)
+    }
+
+    //此函数用于为给定的item生成一个不重复的key
+    //不设置这个的话，会报这个警告：Each child in an array or iterator should have a unique "key" prop.
+    _keyExtractor = (item) => item.img;
+
     /**
      * 下啦刷新
      */
@@ -159,6 +166,7 @@ export default class NetDemo extends PureComponent {
             page : 1,
             refreshing : true,
             loading : false,
+            // 清空数组
             dataSource : [],
         }, () => {
             this.getJokeList();
@@ -169,23 +177,46 @@ export default class NetDemo extends PureComponent {
      * 上拉加载更多
      */
     handleLoadMore = () => {
+        if (!this.onEndReachedCalledDuringMomentum) {
+            // alert('上拉一下');
+            this.more();
+            this.onEndReachedCalledDuringMomentum = true;
+        }
+    }
+
+    more = () => {
         this.setState({
             page : this.state.page++,
             refreshing : false,
             loading : true,
         }, () => {
-            this.getJokeList();
+            var params = new Map();
+            params.set('showapi_appid', '60195');
+            params.set('showapi_sign', '83a8eb462be74584807491f5cfe43c24');
+            params.set('page', this.state.page);
+            params.set('maxResult', MAX_RESULT);
+
+            NetUtil.PostWithHttpParam(
+                ApiAddress.HOST,
+                params,
+                jsonData => {
+                    this.setState({
+                        //拼接数据
+                        dataSource : this.state.dataSource.concat(jsonData.showapi_res_body.contentlist),
+                        loading : false,
+                        refreshing : false,
+                    });
+                },
+                err => {
+                    console.log('error///' + err.toString());
+                    this.setState({
+                        error : err.toString(),
+                        loading : false,
+                        refreshing : false
+                    });
+                });
         });
     }
-
-    //点击列表点击每一行
-    clickItem(item) {
-        alert(item.title)
-    }
-
-    //此函数用于为给定的item生成一个不重复的key
-    //不设置这个的话，会报这个警告：Each child in an array or iterator should have a unique "key" prop.
-    _keyExtractor = (item) => item.img;
 
     render() {
         return (
@@ -203,19 +234,23 @@ export default class NetDemo extends PureComponent {
                 //当列表被滚动到距离内容最底部不足onEndReachedThreshold的距离时调用。
                 onEndReached={this.handleLoadMore}
                 //执行上啦的时候10%执行 决定当距离内容最底部还有多远时触发onEndReached回调。注意此参数是一个比值而非像素单位。比如，0.5表示距离内容最底部的距离为当前列表可见长度的一半时触发。
-                onEndReachedThreshold={0}
+                onEndReachedThreshold={0.1}
 
                 //可选优化项。但是实际测试中，如果不做该项优化，性能会差很多。所以强烈建议做此项优化！
                 //如果不做该项优化，每个列表都需要事先渲染一次，动态地取得其渲染尺寸，然后再真正地渲染到页面中。
                 //如果预先知道列表中的每一项的高度(ITEM_HEIGHT)和其在父组件中的偏移量(offset)和位置(index)，就能减少一次渲染。这是很关键的性能优化点。
-                getItemLayout={(data, index) => (
-                    { length : 250, offset : 250 * index, index }
-                )}
+                // getItemLayout={(data, index) => (
+                //     { length : 250, offset : 250 * index, index }
+                // )}
 
-                //加载头部
-                ListHeaderComponent={this.renderHeader}
+                // //加载头部
+                // ListHeaderComponent={this.renderHeader}
                 //加载底部
                 ListFooterComponent={this.renderFooter}
+
+                onMomentumScrollBegin={() => {
+                    this.onEndReachedCalledDuringMomentum = false;
+                }}
             />
         );
     }
@@ -242,5 +277,9 @@ const styles = StyleSheet.create({
     }, text : {
         fontSize : 30,
         color : Colors.gray,
+    }, bg_footer : {
+        paddingVertical : 20,
+        borderTopWidth : 1,
+        borderColor : "#CED0CE"
     }
 });
