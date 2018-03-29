@@ -124,6 +124,10 @@ var strList=[
         content:'此页面主要测试与原生iOS交互'
     },
     {
+        key:'热更新',
+        content:'此页面主要测试与原生iOS交互'
+    },
+    {
         key:'打包',
         content:'PickUpDemo'
     },
