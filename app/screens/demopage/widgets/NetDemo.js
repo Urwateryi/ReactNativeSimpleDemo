@@ -1,7 +1,7 @@
 /**
  * Description:网络请求
  *
- * 接口使用易源数据
+ * 接口使用易源数据 图文列表
  * https://www.showapi.com/api/view/341/2
  *
  * Author: zoe
