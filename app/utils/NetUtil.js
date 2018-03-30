@@ -80,6 +80,8 @@ export default class NetUtil {
             body:body
         };
 
+        console.log('url///' + url+"//body//"+body);
+
         fetch(url,requestOptional)
             .then(this.checkStatus)
             .then((response)=>response.json())

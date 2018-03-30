@@ -49,18 +49,20 @@ export default class NetDemo extends PureComponent {
     }
 
     componentDidMount() {
-        this.getJokeList();
+        this.getJokeList(1);
     }
 
     /**
      * 获取笑话列表
      */
-    getJokeList() {
+    getJokeList(page) {
         var params = new Map();
         params.set('showapi_appid', '60195');
         params.set('showapi_sign', '83a8eb462be74584807491f5cfe43c24');
-        params.set('page', this.state.page);
+        params.set('page', page);
         params.set('maxResult', MAX_RESULT);
+
+        console.log('page///' + page);
 
         NetUtil.PostWithHttpParam(
             ApiAddress.HOST,
@@ -169,7 +171,7 @@ export default class NetDemo extends PureComponent {
             // 清空数组
             dataSource : [],
         }, () => {
-            this.getJokeList();
+            this.getJokeList(1);
         });
     }
 
@@ -179,12 +181,12 @@ export default class NetDemo extends PureComponent {
     handleLoadMore = () => {
         if (!this.onEndReachedCalledDuringMomentum) {
             this.setState({
-                page: this.state.page++,
+                page: ++this.state.page,
                 refreshing: false,
                 loading: true,
             }, () => {
                 // alert('上拉一下');
-                this.getJokeList();
+                this.getJokeList(this.state.page);
                 this.onEndReachedCalledDuringMomentum = true;
             });
         }
@@ -211,9 +213,9 @@ export default class NetDemo extends PureComponent {
                 //可选优化项。但是实际测试中，如果不做该项优化，性能会差很多。所以强烈建议做此项优化！
                 //如果不做该项优化，每个列表都需要事先渲染一次，动态地取得其渲染尺寸，然后再真正地渲染到页面中。
                 //如果预先知道列表中的每一项的高度(ITEM_HEIGHT)和其在父组件中的偏移量(offset)和位置(index)，就能减少一次渲染。这是很关键的性能优化点。
-                // getItemLayout={(data, index) => (
-                //     { length : 250, offset : 250 * index, index }
-                // )}
+                getItemLayout={(data, index) => (
+                    { length : 90, offset : 90 * index, index }
+                )}
 
                 // //加载头部
                 // ListHeaderComponent={this.renderHeader}
@@ -236,6 +238,7 @@ const styles = StyleSheet.create({
         backgroundColor : Colors.bg,
     },
     item : {
+        height:90,
         flexDirection : 'row',
         backgroundColor : 'white',
         justifyContent : 'center',
