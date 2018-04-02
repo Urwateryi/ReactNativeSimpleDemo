@@ -17,6 +17,8 @@ import StorageDemo from "./widgets/StorageDemo";
 import Colors from '../../resources/Colors'
 import TxtPicPageDemo from "./widgets/TxtPicPageDemo";
 import {jumpPager} from "../../utils/PageUtil";
+import AnimateDemo from "./widgets/AnimateDemo";
+import LifeCycleDemo from "./widgets/LifeCycleDemo";
 
 var strList=[
     {
@@ -104,8 +106,12 @@ var strList=[
         content:'NetDemo'
     },
     {
+        key:'生命周期',
+        content:'LifeCycleDemo'
+    },
+    {
         key:'动画',
-        content:'AnimationDemo'
+        content:'AnimateDemo'
     },
     {
         key:'自定义控件',
