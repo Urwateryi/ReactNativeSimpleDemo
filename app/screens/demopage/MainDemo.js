@@ -19,6 +19,7 @@ import TxtPicPageDemo from "./widgets/TxtPicPageDemo";
 import {jumpPager} from "../../utils/PageUtil";
 import AnimateDemo from "./widgets/AnimateDemo";
 import LifeCycleDemo from "./widgets/LifeCycleDemo";
+import { RnAndroidCommunicationDemo } from "./widgets/RnAndroidCommunicationDemo";
 
 var strList=[
     {
@@ -123,7 +124,7 @@ var strList=[
     },
     {
         key:'与Android交互',
-        content:'此页面主要测试与原生Android交互'
+        content:'RnAndroidCommunicationDemo'
     },
     {
         key:'与iOS交互',
