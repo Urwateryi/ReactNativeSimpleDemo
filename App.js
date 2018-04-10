@@ -30,6 +30,9 @@ import LifeCycleDemo from "./app/screens/demopage/widgets/LifeCycleDemo";
 import AnimateDemo from "./app/screens/demopage/widgets/AnimateDemo";
 import ToastDemo from "./app/screens/demopage/widgets/ToastDemo";
 import { RnAndroidCommunicationDemo } from "./app/screens/demopage/widgets/RnAndroidCommunicationDemo";
+import SkipDemo from "./app/screens/demopage/widgets/SkipDemo";
+import SkipEditNamePage from "./app/screens/demopage/widgets/SkipEditNamePage";
+import SkipEditAgePage from "./app/screens/demopage/widgets/SkipEditAgePage";
 
 //构造方法为TabNavigator(RouteConfigs, TabNavigatorConfig)
 const HomeTab = TabNavigator(
@@ -168,7 +171,10 @@ const AllNavigator = StackNavigator(
         ToastDemo:{screen:ToastDemo},
         LifeCycleDemo:{screen:LifeCycleDemo},
         AnimateDemo:{screen:AnimateDemo},
-        RnAndroidCommunicationDemo:{screen:RnAndroidCommunicationDemo}
+        RnAndroidCommunicationDemo:{screen:RnAndroidCommunicationDemo},
+        SkipDemo:{screen:SkipDemo},
+        SkipEditNamePage:{screen:SkipEditNamePage},
+        SkipEditAgePage:{screen:SkipEditAgePage}
     },
 //还可以有参数StackNavigatorConfig，这个参数主要是配置整个路由的，包括跳转动画，跳转方式等。
     {

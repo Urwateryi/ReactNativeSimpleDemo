@@ -28,10 +28,15 @@ import {
     Text,
     DeviceEventEmitter,
     NativeModules,
-    View
+    View, Platform
 } from 'react-native';
 
 export class RnAndroidCommunicationDemo extends PureComponent{
+    static navigationOptions = ({navigation}) => ({
+        headerTitle: "RN与原生交互",
+        headerStyle: {backgroundColor: '#fff', height: Platform.OS == "ios" ? 64 : 48},
+    });
+
     componentWillMount(){
         DeviceEventEmitter.addListener("EventName",()=>{
             this.showState();

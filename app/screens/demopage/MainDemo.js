@@ -20,6 +20,7 @@ import {jumpPager} from "../../utils/PageUtil";
 import AnimateDemo from "./widgets/AnimateDemo";
 import LifeCycleDemo from "./widgets/LifeCycleDemo";
 import { RnAndroidCommunicationDemo } from "./widgets/RnAndroidCommunicationDemo";
+import SkipDemo from "./widgets/SkipDemo";
 
 var strList=[
     {
@@ -101,6 +102,10 @@ var strList=[
     {
         key:'图文列表',
         content:'TxtPicPageDemo'
+    },
+    {
+        key:'页面跳转，数据回传',
+        content:'SkipDemo'
     },
     {
         key:'网络请求',
