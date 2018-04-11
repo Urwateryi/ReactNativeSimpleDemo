@@ -32,7 +32,7 @@ export default class SkipDemo extends PureComponent {
     render() {
         return (
             <View style={styles.container}>
-                <TouchableOpacity style={styles.item} activeOpacity={1} onPress={() => this.onSkipToEditName()}>
+                <TouchableOpacity style={styles.item} activeOpacity={1} onPress={() => this.onSkipToEditName(this.state.name)}>
                     <Text style={styles.txt_tag}>姓名：</Text>
                     <Text style={styles.txt_content}>{this.state.name}</Text>
 
@@ -52,8 +52,8 @@ export default class SkipDemo extends PureComponent {
     /**
      * 跳转到编辑姓名页面
      */
-    onSkipToEditName() {
-        jumpPager(this.props.navigation.navigate,'SkipEditNamePage')
+    onSkipToEditName(name) {
+        jumpPager(this.props.navigation.navigate,'SkipEditNamePage',name)
     }
 
     /**

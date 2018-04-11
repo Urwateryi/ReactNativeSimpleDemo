@@ -120,6 +120,10 @@ var strList=[
         content:'AnimateDemo'
     },
     {
+        key:'进度圈',
+        content:'AnimateDemo'
+    },
+    {
         key:'自定义控件',
         content:'CustomCompontDemo'
     },

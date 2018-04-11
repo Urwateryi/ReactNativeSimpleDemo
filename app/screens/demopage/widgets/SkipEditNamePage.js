@@ -1,4 +1,4 @@
-import { Platform, StyleSheet, View,TextInput,Text } from "react-native";
+import { Platform, StyleSheet, View, TextInput, Text,TouchableOpacity } from "react-native";
 import React, { PureComponent } from "react";
 import Colors from "../../../resources/Colors";
 
@@ -20,7 +20,13 @@ export default class SkipEditNamePage extends PureComponent {
     }
 
     static navigationOptions = ({ navigation }) => ({
+
         headerTitle : "编辑姓名",
+        headerRight : (
+            <TouchableOpacity activeOpacity={0.5}>
+                <Text style={styles.title_right}>保存</Text>
+            </TouchableOpacity>
+        ),
         headerStyle : { backgroundColor : '#fff', height : Platform.OS == "ios" ? 64 : 48 },
     });
 
@@ -30,13 +36,14 @@ export default class SkipEditNamePage extends PureComponent {
                 <View style={styles.item}>
                     <Text style={styles.txt_tag}>姓名：</Text>
                     <TextInput
-                               placeholder='请输入你的姓名'
-                               maxLength={15}
-                               value={this.state.content}
-                               placeholderTextColor={Colors.bright_gray}
-                               underlineColorAndroid='transparent' //设置下划线背景色透明 达到去掉下划线的效果
-                               autoCapitalize={'characters'}
-                               style={styles.txt_content}/>
+                        placeholder='请输入你的姓名'
+                        maxLength={15}
+                        value={this.state.content}
+                        onChangeText={(event) => this.setState({ content : event })}
+                        placeholderTextColor={Colors.bright_gray}
+                        underlineColorAndroid='transparent' //设置下划线背景色透明 达到去掉下划线的效果
+                        autoCapitalize={'characters'}
+                        style={styles.txt_content}/>
                 </View>
             </View>
         );
@@ -47,6 +54,10 @@ const styles = StyleSheet.create({
     container : {
         flex : 1,
         backgroundColor : Colors.bg
+    }, title_right : {
+        fontSize : 15,
+        color : Colors.light_gray,
+        marginRight : 10
     }, item : {
         backgroundColor : 'white',
         paddingLeft : 10,
