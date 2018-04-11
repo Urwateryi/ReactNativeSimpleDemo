@@ -20,6 +20,7 @@ export default class SkipEditNamePage extends PureComponent {
     }
 
     componentDidMount(){
+        //在static中访问this，需要在componentDidMount中动态的添加点击事件
         this.props.navigation.setParams({navigatePress:this.onSubmit})
     }
 
