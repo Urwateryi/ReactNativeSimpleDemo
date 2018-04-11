@@ -24,7 +24,7 @@ export default class SkipDemo extends PureComponent {
         this.onEndReachedCalledDuringMomentum = true;
         //状态机
         this.state = {
-            name : '',
+            name : '张毅',
             age : ''
         }
     }
@@ -52,8 +52,8 @@ export default class SkipDemo extends PureComponent {
     /**
      * 跳转到编辑姓名页面
      */
-    onSkipToEditName(name) {
-        jumpPager(this.props.navigation.navigate,'SkipEditNamePage',name)
+    onSkipToEditName(content) {
+        jumpPager(this.props.navigation.navigate,'SkipEditNamePage',{name:content})
     }
 
     /**

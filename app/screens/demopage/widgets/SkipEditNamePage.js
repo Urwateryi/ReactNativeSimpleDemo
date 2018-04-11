@@ -1,4 +1,4 @@
-import { Platform, StyleSheet, View, TextInput, Text,TouchableOpacity } from "react-native";
+import { Platform, StyleSheet, View, TextInput, Text,TouchableOpacity,ToastAndroid } from "react-native";
 import React, { PureComponent } from "react";
 import Colors from "../../../resources/Colors";
 
@@ -19,11 +19,19 @@ export default class SkipEditNamePage extends PureComponent {
         }
     }
 
-    static navigationOptions = ({ navigation }) => ({
+    componentDidMount(){
+        this.props.navigation.setParams({navigatePress:this.onSubmit})
+    }
 
+    onSubmit(){
+        ToastAndroid.show("点击了保存",ToastAndroid.SHORT);
+    }
+
+    static navigationOptions = ({ navigation }) => (
+        {
         headerTitle : "编辑姓名",
         headerRight : (
-            <TouchableOpacity activeOpacity={0.5}>
+            <TouchableOpacity activeOpacity={0.5} onPress={()=>navigation.state.params.navigatePress()}>
                 <Text style={styles.title_right}>保存</Text>
             </TouchableOpacity>
         ),
@@ -38,7 +46,7 @@ export default class SkipEditNamePage extends PureComponent {
                     <TextInput
                         placeholder='请输入你的姓名'
                         maxLength={15}
-                        value={this.state.content}
+                        value={this.props.navigation.state.params.name}
                         onChangeText={(event) => this.setState({ content : event })}
                         placeholderTextColor={Colors.bright_gray}
                         underlineColorAndroid='transparent' //设置下划线背景色透明 达到去掉下划线的效果
