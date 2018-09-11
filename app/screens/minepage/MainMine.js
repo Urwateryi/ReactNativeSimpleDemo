@@ -13,7 +13,8 @@ export default class MainMine extends PureComponent {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.text}>MainMine</Text>
+                <Text style={styles.text}>Main</Text>
+                <Text style={styles.text}>Mine</Text>
             </View>
         );
     }
@@ -22,8 +23,8 @@ export default class MainMine extends PureComponent {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'column',//当前容器使用什么布局
-        justifyContent: 'space-around',//定制主轴
+        flexDirection: 'row',//当前容器使用什么布局
+        justifyContent: 'space-evenly',//定制主轴
         alignItems: 'stretch',//定制副轴
         alignContent: 'flex-start',
         backgroundColor: Colors.bg,

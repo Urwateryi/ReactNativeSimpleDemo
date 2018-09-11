@@ -36,16 +36,26 @@ export default class RefDemo extends PureComponent {
         this.setState({ count:this.state.count+1})
         if (this.state.count% 2==0){
             this.setState({pic:Images.other_test.bg_beauty})
-            this.refs.changeme.setNativeProps({
+            this.refImage.setNativeProps({
                 width: 80,
                 height: 80
             })
+            //上下两种写法相同效果
+            // this.refs.changeme.setNativeProps({
+            //     width: 80,
+            //     height: 80
+            // })
         }else {
             this.setState({pic:Images.home_button.ic_my_select})
-            this.refs.changeme.setNativeProps({
+            this.refImage.setNativeProps({
                 width: 300,
                 height: 300
             })
+            //上下两种写法相同效果
+            // this.refs.changeme.setNativeProps({
+            //     width: 300,
+            //     height: 300
+            // })
         }
     }
 
@@ -57,8 +67,16 @@ export default class RefDemo extends PureComponent {
                 //点击事件，要记得绑定
                 onPress={this._onButtonPress.bind(this)}>
 
+                {/*<Image*/}
+                    {/*ref='changeme'*/}
+                    {/*style={styles.pic}*/}
+                    {/*source={this.state.pic}*/}
+                {/*/>*/}
+                {/*上下两种写法相同效果*/}
                 <Image
-                    ref='changeme'
+                    ref={
+                        (c)=>this.refImage=c
+                    }
                     style={styles.pic}
                     source={this.state.pic}
                 />

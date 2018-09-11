@@ -95,8 +95,12 @@ export default class TextDemo extends PureComponent {
                     测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距
                 </Text>
 
-                <Text style={styles.testWordGap}>
-                    测试字距测试字距测试字距 {Constants.my_name='what did u say'} {global.variate.website} {LOGIN_NAME}
+                {/*<Text style={styles.testWordGap}>*/}
+                    {/*测试字距测试字距测试字距 {Constants.my_name='what did u say'} {global.variate.website} {LOGIN_NAME}*/}
+                {/*</Text>*/}
+
+                <Text  numberOfLines={2} ellipsizeMode={'tail'} selectionColor={'red'}>
+                    测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距测试行距
                 </Text>
             </View>
         );
@@ -142,6 +146,9 @@ const styles = StyleSheet.create({
     testWordGap:{
         letterSpacing:50,//为什么没有作用呢，ios上有作用，android上无作用
         color:'red'
-    }
+    },
+    // ellipsizeLine:{
+    //     ellipsizeMode:'tail'
+    // }
 });
 

@@ -43,6 +43,7 @@ export default class InputDemo extends PureComponent {
                            autoCapitalize={'characters'}
                            editable={true}
                            maxLength={20}
+                           defaultValue={'测试一下'}
                            style={styles.input}
                            onChangeText={(event) => this.setState({input: event})}
                            onEndEditing={(event) =>  this.setState({input:'onEndEditing:'+ event})}

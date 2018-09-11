@@ -21,6 +21,11 @@ import AnimateDemo from "./widgets/AnimateDemo";
 import LifeCycleDemo from "./widgets/LifeCycleDemo";
 import { RnAndroidCommunicationDemo } from "./widgets/RnAndroidCommunicationDemo";
 import SkipDemo from "./widgets/SkipDemo";
+import PickerDemo from "./widgets/PickerDemo";
+import CameraRollDemo from "./widgets/CameraRollDemo";
+import LinkDemo from "./widgets/LinkDemo";
+import ModalDemo from "./widgets/ModalDemo";
+import PropsDemo from "./widgets/PropsDemo";
 
 var strList=[
     {
@@ -52,6 +57,10 @@ var strList=[
         content:'ScrollViewDemo'
     },
     {
+        key:'CameraRoll',
+        content:'CameraRollDemo'
+    },
+    {
         key:'Ref',
         content:'RefDemo'
     },
@@ -80,6 +89,14 @@ var strList=[
         content:'ToastDemo'
     },
     {
+        key:'Link',
+        content:'LinkDemo'
+    },
+    {
+        key:'Modal',
+        content:'ModalDemo'
+    },
+    {
         key:'Video',
         content:'VideoDemo'
     },
@@ -90,6 +107,14 @@ var strList=[
     {
         key:'Swiper',
         content:'SwiperDemo'
+    },
+    {
+        key:'Props',
+        content:'PropsDemo'
+    },
+    {
+        key:'AsyncStorage',
+        content:'AsyncStorageDemo";'
     },
     {
         key:'长列表FlatList',
